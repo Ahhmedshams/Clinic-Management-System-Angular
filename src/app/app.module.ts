@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
-import {DashboardModule} from './module/dashboard/dashboard.module'
+import {DashboardModule} from './module/dashboard/dashboard.module';
+import {HttpClientModule}  from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,11 @@ import {DashboardModule} from './module/dashboard/dashboard.module'
     AppRoutingModule,
     NgbModule,
     RouterModule,
-    DashboardModule
+    DashboardModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
