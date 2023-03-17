@@ -1,0 +1,111 @@
+<!-- <p onclick="printData()">appointment works!</p> -->
+<h1>Appointment<h1>
+
+
+  <!-- <table class="table mx-auto mt-4">
+    <thead>
+      <tr>
+
+        <th scope="col">ID</th>
+        <th scope="col">Patient NAME</th>
+        <th scope="col">Doctor NAME</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time</th>
+        <th colspan="3" scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let item of appointment'>
+        <td>{{item._id}}</td>
+        <td>{{item.patientId.name}}</td>
+        <td>{{item.doctorId.name}}</td>
+        <td>{{item.date}}</td>
+        <td>{{item.time}}</td>
+
+        <td>
+          <a [routerLink]="['/appointment',item._id]" routerLinkActive="active1"> Details </a>
+        </td>
+        <td>
+          <button class="btn btn-primary">edit</button>
+          <!-- <a [routerLink]="['/departments','edit',item._id]" routerLinkActive="active1"> edit </a> -->
+
+        <!-- </td>
+        <td>
+          <button class="btn btn-danger">delete</button>
+
+        </td>
+      </tr>
+
+    </tbody>
+  </table>  -->
+
+
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        </mat-form-field>
+
+        <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let row"> {{row._id}} </td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let row"> {{row.patientId.name}} </td>
+            </ng-container>
+
+            <!-- dr Column -->
+            <ng-container matColumnDef="Dr name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dr name </th>
+              <td mat-cell *matCellDef="let row"> {{row.doctorId.name}} </td>
+            </ng-container>
+
+            <!-- date Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+              <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+            </ng-container>
+
+            <!-- time Column -->
+            <ng-container matColumnDef="time">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Time </th>
+              <td mat-cell *matCellDef="let row"> {{row.time}} </td>
+            </ng-container>
+
+            <!-- status Column -->
+            <!-- <ng-container matColumnDef="Scaned">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+              <td mat-cell *matCellDef="let row" > {{row.isScaned}} </td>
+            </ng-container> -->
+             <!-- accept Column -->
+             <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+              <td mat-cell *matCellDef="let row">
+                <button mat-button>
+                  <a [routerLink]="['/appointment','details',row._id]" routerLinkActive="active1" class="text-decoration-none"> Details </a>
+                </button>
+                <button  mat-button color="primary" >Edit</button><!--class="fa-solid fa-pen"-->
+
+                <button mat-button color="warn" >delete</button> <!--<i class="fa-solid fa-trash"></i>-->
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+              <!-- <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td> -->
+            </tr>
+          </table>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of appointment"></mat-paginator>
+        </div>
+
+
+

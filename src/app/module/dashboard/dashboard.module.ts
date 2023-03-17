@@ -19,6 +19,7 @@ import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HomeComponent } from './main/home/home.component';
+import { AppointmentComponent } from './appointment/appointment.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HomeComponent } from './main/home/home.component';
     SidenavComponent,
     ReportComponent,
     PendingComponent,
-    HomeComponent
+    HomeComponent,
+    AppointmentComponent
   ],
   imports: [
     CommonModule,

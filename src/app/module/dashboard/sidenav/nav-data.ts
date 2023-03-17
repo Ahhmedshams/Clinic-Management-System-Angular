@@ -8,11 +8,17 @@ export const navbarData = [
       routerLink: 'report',
       icon:'fal fa-chart-bar',
       label:'Report'
-     } 
+     }
      ,
    {
       routerLink: 'pending',
       icon:'fa fa-server',
       label:'pending'
-     } 
+     }
+     ,
+   {
+      routerLink: 'appointment',
+      icon:'fa fa-calendar-check ',
+      label:'Appointment'
+     }
 ]
