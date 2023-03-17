@@ -17,6 +17,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
+import {MatTabsModule} from '@angular/material/tabs';
+import { HomeComponent } from './main/home/home.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { NgConfirmModule } from 'ng-confirm-box';
     BodyComponent,
     SidenavComponent,
     ReportComponent,
-    PendingComponent
+    PendingComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import { NgConfirmModule } from 'ng-confirm-box';
     MatCardModule,
     MatButtonModule,
     NgToastModule,
-    NgConfirmModule
+    NgConfirmModule,
+    MatTabsModule
   ]
 })
 export class DashboardModule { }
