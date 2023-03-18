@@ -18,6 +18,11 @@ export class PatientService {
   getAll(){
     return this.http.get<Patient[]>(this.baseUrl)
   }
+
+  getActive(){
+    return this.http.get<Patient[]>('http://localhost:8080/patient?status=active')
+  }
+
   getById(id:Number){
     return this.http.get<Patient>(this.baseUrl+id)
   }

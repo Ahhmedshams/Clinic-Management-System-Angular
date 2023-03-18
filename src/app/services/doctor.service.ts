@@ -15,6 +15,12 @@ export class DoctorService {
   getAll(){
     return this.http.get<Doctor[]>(this.baseUrl)
   }
+  getPending(){
+    return this.http.get<Doctor[]>('http://localhost:8080/doctors?status=pending')
+  }
+  getActive(){
+    return this.http.get<Doctor[]>('http://localhost:8080/doctors?status=active')
+  }
   getById(id:Number){
     return this.http.get<Doctor>(this.baseUrl+id)
   }
@@ -22,6 +28,9 @@ export class DoctorService {
     return this.http.delete(this.baseUrl+id)
   }
 
+  accept(id:Number,updatedValue:any){
+    return this.http.patch(this.baseUrl+id,updatedValue)
+  }
   edit(doctor:Doctor){
    return this.http.patch(this.baseUrl+doctor._id,doctor)
  }

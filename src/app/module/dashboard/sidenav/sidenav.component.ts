@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { animate, keyframes, style, transition, trigger } from '@angular/animations';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 
 interface SideNavToggle{
@@ -9,9 +10,37 @@ interface SideNavToggle{
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss']
+  styleUrls: ['./sidenav.component.scss'],
+  animations:[
+    trigger('fadeInOut',[
+      transition(':enter',[
+        style({opacity:0}),
+        animate('350ms',
+        style({opacity:1})
+        )
+      ]),
+      transition(':leave',[
+        style({opacity:0}),
+        animate('350ms',
+        style({opacity:1})
+        )
+      ])
+    ]),
+    trigger('rotate',[
+      transition(':enter',[
+        animate('800ms',
+        keyframes([
+          style({transform: 'rotate(0deg)',offset:'0'}),
+          style({transform: 'rotate(9turn)',offset:'1'})
+        ])
+        )
+      ])
+    ])
+
+    
+  ]
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
   collapsed = true;
   navData =navbarData; 
 
@@ -23,6 +52,19 @@ export class SidenavComponent {
     this.onToggleSideNav.emit({collapsed: this.collapsed , screenWidth: this.screenWidth})
   }
 
+  @HostListener ( 'window:resize', ['$event'])
+  onResize (event: any) {
+    this. screenWidth= window.innerWidth;
+    if(this.screenWidth <= 768) {
+        this.collapsed =false;
+        this.onToggleSideNav.emit({collapsed: this.collapsed , screenWidth: this.screenWidth})
+      }
+
+  }
+
+  ngOnInit(): void {
+    this.screenWidth = window.innerWidth;
+  }
   toggleCollapse():void{
     this.collapsed = !this.collapsed;
     this.onToggleSideNav.emit({collapsed: this.collapsed , screenWidth: this.screenWidth})

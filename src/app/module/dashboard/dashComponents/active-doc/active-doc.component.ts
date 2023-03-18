@@ -2,30 +2,23 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { NgToastService } from 'ng-angular-popup/public-api';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
-
-import { Appointment } from 'src/app/models/appointment';
-import { Calendar } from 'src/app/models/calendar';
 import { Doctor } from 'src/app/models/doctor';
-import { Employee } from 'src/app/models/employee';
-import { Medicine } from 'src/app/models/medicine';
-import { Patient } from 'src/app/models/patient';
-import { AppointmentService } from 'src/app/services/appointment.service';
-import { CalenderService } from 'src/app/services/calender.service';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { EmployeeService } from 'src/app/services/employee.service';
-import { MedicineService } from 'src/app/services/medicine.service';
-import { PatientService } from 'src/app/services/patient.service';
-import {NgConfirmService} from 'ng-confirm-box';
-@Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
-})
-export class MainComponent implements  OnInit {
 
-  
+import { DoctorService } from 'src/app/services/doctor.service';
+
+import {NgConfirmService} from 'ng-confirm-box';
+import { ViewDoctorComponent } from '../view-doctor/view-doctor.component';
+@Component({
+  selector: 'app-active-doc',
+  templateUrl: './active-doc.component.html',
+  styleUrls: ['./active-doc.component.css']
+})
+export class ActiveDocComponent {
+  modalRef: MdbModalRef<ViewDoctorComponent> | null = null;
+
   public dataSource!: MatTableDataSource<Doctor>;
   doctor:Doctor[]=[];
   displayedColumns: string[] = ['id', 'name', 'gender', 'email','phone','status','action'];
@@ -34,12 +27,14 @@ export class MainComponent implements  OnInit {
 
   constructor(
     public doctorService:DoctorService,
-  //  private toastService:NgToastService
-  private confirmService: NgConfirmService 
+  private confirmService: NgConfirmService,
+  public dialog: MatDialog,
+  public modalService:MdbModalService,
+
   ){}
 
   ngOnInit(){
-    this.doctorService.getAll().subscribe(data=>{
+    this.doctorService.getActive().subscribe(data=>{
       this.doctor = data;
       this.dataSource = new MatTableDataSource(this.doctor);
       this.dataSource.paginator = this.paginator;
@@ -57,10 +52,16 @@ export class MainComponent implements  OnInit {
     }
   }
 
-  print(){
-    console.log(this.doctor)
+
+  openView(doctor:any){
+    this.modalRef = this.modalService.open(ViewDoctorComponent, {
+      modalClass: ' modal-dialog-centered',
+      data: {
+        doctor,
+      },
+    });
+        
   }
- 
 
   Block(id: number) {
     this.confirmService.showConfirm("Are you sure want  to block this user?",
@@ -70,12 +71,5 @@ export class MainComponent implements  OnInit {
     () => {
       //yor logic if No clicked
     })
-  }
-
-  accept(id:Number)
-  {
-    this.doctorService.updateStatus(id,{status:"active"}).subscribe(data=>
-      this.doctorService.getAll().subscribe(data=>{
-        this.doctor = data;}))
   }
 }

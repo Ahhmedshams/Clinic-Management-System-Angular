@@ -13,6 +13,14 @@ export class EmployeeService {
   getAll(){
     return this.http.get<Employee[]>(this.baseUrl)
   }
+  getPending(){
+    return this.http.get<Employee[]>('http://localhost:8080/employee?status=pending')
+  }
+
+  getActive(){
+    return this.http.get<Employee[]>('http://localhost:8080/employee?status=active')
+  }
+  
   getById(id:Number){
     return this.http.get<Employee>(this.baseUrl+id)
   }

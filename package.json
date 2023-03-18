@@ -25,6 +25,8 @@
     "awesome": "^0.0.7",
     "bootstrap": "^5.2.3",
     "font": "^0.0.4",
+    "mdb-angular-ui-kit": "^4.0.0",
+    "mdb-ui-kit": "^6.2.0",
     "ng-angular-popup": "^0.2.0",
     "ng-confirm-box": "^0.0.6",
     "rxjs": "~7.8.0",
