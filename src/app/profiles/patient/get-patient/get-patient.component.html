@@ -1,24 +1,59 @@
-<h2>
-  {{ patientObj.name }}
-</h2>
-<h2>
-  {{ patientObj.gender }}
-</h2>
-<h2>
-  {{ patientObj.age }}
-</h2>
-<h2>
-  {{ patientObj.email }}
-</h2>
-<h2>
-  {{ patientObj.phone }}
-</h2>
-<h2>
-  {{ patientObj.address.city }}
-</h2>
-<h2>
-  {{ patientObj.address.street }}
-</h2>
-<h2>
-  {{ patientObj.address.builings }}
-</h2>
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-6 border-right">
+      <div class="d-flex flex-column align-items-center text-center">
+        <img
+          class="rounded-circle mt-5"
+          width="150px"
+          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+        /><span class="font-weight-bold"> {{ patientObj.name }} </span
+        ><span class="text-black-50"> {{ patientObj.email }} </span
+        ><span> </span>
+      </div>
+    </div>
+    <div class="col-md-6 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-md-12 mt-2">
+            <b class="labels">Name: </b> <span> {{ patientObj.name }} </span>
+          </div>
+          <div class="col-md-12 mt-2">
+            <b class="labels">Email: </b> <span> {{ patientObj.email }} </span>
+          </div>
+          <div class="col-md-12 mt-2">
+            <b class="labels">Mobile Number: </b>
+            <span> {{ patientObj.phone }} </span>
+          </div>
+          <div class="col-md-12 mt-2">
+            <b class="labels">Gender: </b>
+            <span> {{ patientObj.gender }} </span>
+          </div>
+          <div class="col-md-12 mt-2">
+            <b class="labels">Age: </b>
+            <span> {{ patientObj.age }} </span>
+          </div>
+
+          <div class="col-md-12 mt-2">
+            <b class="labels">Address: </b>
+            <span> {{ patientObj.address.city }} </span>
+            <span> {{ patientObj.address.street }} </span>
+            <span> {{ patientObj.address.builings }} </span>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 col-md-12">
+        <button class="btn btn-primary profile-button mx-5" type="button">
+          <a
+            [routerLink]="['/profile/patient/', 'update', patientObj._id]"
+            routerLinkActive="router-link-active"
+            >Update Your Profile</a
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

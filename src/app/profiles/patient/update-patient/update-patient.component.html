@@ -1,1 +1,105 @@
-<p>update-patient works!</p>
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-5 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        <img
+          class="rounded-circle mt-5"
+          width="150px"
+          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+        /><span class="font-weight-bold">name</span
+        ><span class="text-black-50"> mail </span><span> </span>
+      </div>
+    </div>
+    <div class="col-md-5 border-right">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-right">Profile Update</h4>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-12">
+          <label class="labels">Name</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder="Your Name"
+            [(ngModel)]="newPatient.name"
+          />
+        </div>
+        <div class="col-md-12">
+          <label class="labels">Email</label
+          ><input
+            type="email"
+            class="form-control"
+            placeholder="Your Email"
+            [(ngModel)]="newPatient.email"
+          />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <label class="labels">Mobile Number</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder="Your Phone Number"
+            [(ngModel)]="newPatient.phone"
+          />
+        </div>
+        <div class="col-md-12">
+          <label class="labels">Age</label
+          ><input
+            type="number"
+            min="18"
+            class="form-control"
+            placeholder="Your Age"
+            [(ngModel)]="newPatient.age"
+          />
+        </div>
+        <div class="col-md-12">
+          <label class="labels">Gender</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder="Your Gender"
+            [(ngModel)]="newPatient.gender"
+          />
+        </div>
+        <div class="col-md-12">
+          <label class="labels">Address</label
+          ><input
+            type="text"
+            class="form-control"
+            placeholder="City"
+            [(ngModel)]="newPatient.address.city"
+          />
+          <input
+            type="number"
+            min="0"
+            class="form-control mt-2"
+            placeholder="Street Number"
+            [(ngModel)]="newPatient.address.street"
+          />
+          <input
+            type="text"
+            class="form-control mt-2"
+            placeholder="Building"
+            [(ngModel)]="newPatient.address.building"
+          />
+        </div>
+      </div>
+
+      <div class="mt-5 text-center">
+        <button class="btn btn-danger mx-2" type="button" (click)="cancel()">
+          Cancel
+        </button>
+
+        <button
+          class="btn btn-primary mx-2"
+          type="button"
+          (click)="edit(newPatient)"
+        >
+          Save Profile
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

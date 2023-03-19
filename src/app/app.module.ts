@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,7 @@ import { PatientModule } from './profiles/patient/patient.module';
     HttpClientModule,
     BrowserAnimationsModule,
     PatientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
