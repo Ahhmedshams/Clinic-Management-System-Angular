@@ -21,4 +21,10 @@ export const navbarData = [
       icon:'fa fa-calendar-check ',
       label:'Appointment'
      }
+     ,
+   {
+      routerLink: 'medicines',
+      icon:'fa fa-capsules ',
+      label:'Medicines'
+     }
 ]

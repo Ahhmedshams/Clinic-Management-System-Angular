@@ -11,6 +11,7 @@ import { AppointmentService } from 'src/app/services/appointment.service';
   styleUrls: ['./appointment.component.css']
 })
 export class AppointmentComponent {
+   testModal=false;
  appointment:Appointment[]=[];
  public dataSource!: MatTableDataSource<Appointment>;
  displayedColumns: string[] = ['id', 'name', 'Dr name', 'date','time'/*,'Scaned'*/,'action'];
@@ -37,5 +38,10 @@ applyFilter(event: Event) {
   if (this.dataSource.paginator) {
     this.dataSource.paginator.firstPage();
   }
+}
+openModal(){
+ this.testModal =true;
+  // this.testModal = new bootstrap.Modal(element,{} )
+  // this.testModal?.show()
 }
 }

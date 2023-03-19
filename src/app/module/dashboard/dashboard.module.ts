@@ -20,6 +20,7 @@ import { NgConfirmModule } from 'ng-confirm-box';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HomeComponent } from './main/home/home.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { MedicineComponent } from './medicine/medicine.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AppointmentComponent } from './appointment/appointment.component';
     ReportComponent,
     PendingComponent,
     HomeComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    MedicineComponent
   ],
   imports: [
     CommonModule,
