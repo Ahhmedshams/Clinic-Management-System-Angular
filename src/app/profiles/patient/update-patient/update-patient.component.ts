@@ -18,7 +18,9 @@ export class UpdatePatientComponent {
   ngOnInit(): void {
     this.activatedRouter.params.subscribe((i) => {
       this.patientService.getById(i['id']).subscribe((data) => {
-        this.newPatient = data;
+        data.status == 'active'
+          ? (this.newPatient = data)
+          : this.router.navigateByUrl('');
       });
     });
   }

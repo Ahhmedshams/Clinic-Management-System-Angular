@@ -10,7 +10,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { DashboardModule } from './module/dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PatientModule } from './profiles/patient/patient.module';
+import { ProfilesModule } from './profiles/profiles.module';
 
 @NgModule({
   declarations: [AppComponent, FooterComponent, HeaderComponent],
@@ -22,8 +22,8 @@ import { PatientModule } from './profiles/patient/patient.module';
     DashboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    PatientModule,
     FormsModule,
+    ProfilesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

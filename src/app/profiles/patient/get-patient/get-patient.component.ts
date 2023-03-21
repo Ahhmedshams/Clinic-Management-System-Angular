@@ -13,12 +13,14 @@ export class GetPatientComponent implements OnInit {
   constructor(
     public patientService: PatientService,
     public activatedRouter: ActivatedRoute,
-    public route: Router
+    public router: Router
   ) {}
   ngOnInit(): void {
     this.activatedRouter.params.subscribe((i) => {
       this.patientService.getById(i['id']).subscribe((data) => {
-        this.patientObj = data;
+        data.status == 'active'
+          ? (this.patientObj = data)
+          : this.router.navigateByUrl('');
       });
     });
   }
