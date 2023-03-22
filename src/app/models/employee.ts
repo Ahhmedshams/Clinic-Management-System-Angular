@@ -8,6 +8,7 @@ export class Employee {
     public phone: Number,
     public gender: String,
     public address: any,
+    public password?: String,
     public status?: String,
     public clinicId?: any
   ) {}

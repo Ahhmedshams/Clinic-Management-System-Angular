@@ -19,8 +19,8 @@ export class EmployeeService {
     return this.http.delete(this.baseUrl + id);
   }
 
-  edit(emp: Employee) {
-    return this.http.patch(this.baseUrl + emp._id, emp);
+  edit(emp: Employee, id: Number) {
+    return this.http.patch(this.baseUrl + id, emp);
   }
 
   updateStatus(id: Number, status: any) {

@@ -1,104 +1,166 @@
-<div class="container rounded bg-white mt-5 mb-5">
-  <div class="row">
-    <div class="col-md-5 border-right">
-      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-        <img
-          class="rounded-circle mt-5"
-          width="150px"
-          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-        /><span class="font-weight-bold">{{ newEmp.name }}</span
-        ><span class="text-black-50">{{ newEmp.email }}</span>
-      </div>
-    </div>
-    <div class="col-md-5 border-right">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="text-right">Profile Update</h4>
-      </div>
-      <div class="row mt-2">
-        <div class="col-md-12">
-          <label class="labels">Name</label
-          ><input
-            type="text"
-            class="form-control"
-            placeholder="Your Name"
-            [(ngModel)]="newEmp.name"
-          />
-        </div>
-        <div class="col-md-12">
-          <label class="labels">Email</label
-          ><input
-            type="email"
-            class="form-control"
-            placeholder="Your Email"
-            [(ngModel)]="newEmp.email"
-          />
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-md-12">
-          <label class="labels">Mobile Number</label
-          ><input
-            type="text"
-            class="form-control"
-            placeholder="Your Phone Number"
-            [(ngModel)]="newEmp.phone"
-          />
-        </div>
-        <div class="col-md-12">
-          <label class="labels">Gender</label
-          ><input
-            type="string"
-            class="form-control"
-            placeholder="Your Gender"
-            [(ngModel)]="newEmp.gender"
-          />
-        </div>
+<div class="container">
+  <form [formGroup]="employeeUpdateForm" class="row" (ngSubmit)="edit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="name"
+        [errorStateMatcher]="matcher"
+        placeholder="Your Name"
+      />
+      <mat-error *ngIf="name?.errors?.['name'] && !name?.errors?.['required']">
+        Please enter a valid name</mat-error
+      >
+      <mat-error *ngIf="name?.errors?.['required']">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
 
-        <div class="col-md-12">
-          <label class="labels">Address</label
-          ><input
-            type="text"
-            class="form-control"
-            placeholder="City"
-            [(ngModel)]="newEmp.address.city"
-          />
-          <input
-            type="text"
-            class="form-control mt-2"
-            placeholder="Street Name"
-            [(ngModel)]="newEmp.address.street"
-          />
-          <input
-            type="text"
-            class="form-control mt-2"
-            placeholder="Building"
-            [(ngModel)]="newEmp.address.building"
-          />
-        </div>
-        <!-- <div class="col-md-12">
-          <label class="labels">Clinic Name</label
-          ><input
-            type="number"
-            class="form-control"
-            placeholder="Clinic number"
-            [(ngModel)]="newEmp.clinicId"
-          />
-        </div> -->
-      </div>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        [errorStateMatcher]="matcher"
+        placeholder="Your Email"
+      />
 
-      <div class="mt-5 text-center">
-        <button class="btn btn-danger mx-2" type="button" (click)="cancel()">
-          Cancel
-        </button>
-
-        <button
-          class="btn btn-primary mx-2"
-          type="button"
-          (click)="edit(newEmp)"
+      <mat-error
+        *ngIf="email?.errors?.['email'] && !email?.errors?.['required']"
+      >
+        Please enter a valid Email</mat-error
+      >
+      <mat-error *ngIf="email?.errors?.['required']">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        [errorStateMatcher]="matcher"
+        placeholder="Your Password"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="password?.errors?.['password'] && !password?.errors?.['required']"
+      >
+        Please enter a valid password</mat-error
+      >
+      <mat-error *ngIf="password?.errors?.['required']">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="phone"
+        [errorStateMatcher]="matcher"
+        placeholder="Your phone"
+      />
+      <mat-error
+        *ngIf="phone?.errors?.['phone'] && !phone?.errors?.['required']"
+      >
+        Please enter a valid phone</mat-error
+      >
+      <mat-error *ngIf="phone?.errors?.['required']">
+        phone is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="gender"
+        [errorStateMatcher]="matcher"
+        placeholder="Your phone"
+      />
+      <mat-error
+        *ngIf="gender?.errors?.['gender'] && !gender?.errors?.['required']"
+      >
+        Please enter a valid Gender</mat-error
+      >
+      <mat-error *ngIf="gender?.errors?.['required']">
+        Gender is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <!-- Address-City -->
+    <div formGroupName="address">
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="city"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. Cairo"
+        />
+        <mat-error
+          *ngIf="addressCity?.errors?.['pattern'] && !addressCity?.errors?.['required']"
         >
-          Save Profile
-        </button>
-      </div>
+          Minimum length of 3 letters ,
+          <strong>English alphabeticals only</strong>
+        </mat-error>
+        <mat-error *ngIf="addressCity?.errors?.['required']">
+          City is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <!-- Address-Street -->
+      <mat-form-field>
+        <mat-label>Street</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="street"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. ElGomla"
+        />
+
+        <mat-error *ngIf="addressStreet?.errors?.['required']">
+          Street is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <!-- Address-Country -->
+      <mat-form-field>
+        <mat-label>Builing Number</mat-label>
+        <input
+          type="number"
+          matInput
+          formControlName="building"
+          [errorStateMatcher]="matcher"
+        />
+
+        <mat-error *ngIf="addressBuiling?.errors?.['required']">
+          Builing is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
     </div>
-  </div>
+    <button class="btn btn-danger mx-2 w-25" type="button" (click)="cancel()">
+      Cancel
+    </button>
+
+    <button
+      class="btn btn-primary mx-2 w-25"
+      type="submit"
+      [disabled]="!employeeUpdateForm.valid"
+    >
+      Update Profile
+    </button>
+  </form>
 </div>

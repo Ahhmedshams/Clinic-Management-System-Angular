@@ -9,7 +9,7 @@ import { PatientService } from 'src/app/services/patient.service';
   styleUrls: ['./update-patient.component.css'],
 })
 export class UpdatePatientComponent {
-  newPatient: Patient = new Patient(0, '', '', 0, '', 0, '');
+  newPatient: Patient = new Patient(0, '', '', 0, '', 0, '', '');
   constructor(
     public patientService: PatientService,
     public activatedRouter: ActivatedRoute,

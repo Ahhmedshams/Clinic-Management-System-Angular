@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { MyErrorStateMatcher } from 'src/app/models/ErrorStateMatcher';
 
 @Component({
   selector: 'app-update-employee',
@@ -10,28 +12,85 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class UpdateEmployeeComponent implements OnInit {
   newEmp: Employee = new Employee(0, '', new Date(), '', 0, 0, '', '', '');
+  employeeUpdateForm: FormGroup;
+  matcher: MyErrorStateMatcher;
+  hide = true;
+  id: Number = 0;
+
   constructor(
+    private fb: FormBuilder,
     public empService: EmployeeService,
     public activatedRouter: ActivatedRoute,
     public router: Router
-  ) {}
+  ) {
+    this.employeeUpdateForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      phone: [
+        '',
+        [Validators.required, Validators.pattern('01[0125](-)?[0-9]{8}')],
+      ],
+      gender: ['', [Validators.required]],
+
+      address: this.fb.group({
+        city: ['', [Validators.required, Validators.pattern('[a-zA-Z]{3,}')]],
+        street: ['', Validators.required],
+        building: ['', Validators.required],
+      }),
+    });
+    this.matcher = new MyErrorStateMatcher();
+  }
   ngOnInit(): void {
     this.activatedRouter.params.subscribe((i) => {
       this.empService.getById(i['id']).subscribe((data) => {
-        data.status == 'active'
-          ? (this.newEmp = data)
-          : this.router.navigateByUrl('');
+        if (data.status == 'active') {
+          //  (this.newEmp = data)
+          this.employeeUpdateForm.patchValue(data);
+          this.id = data._id;
+        } else {
+          this.router.navigateByUrl('');
+        }
       });
     });
   }
-  edit(emp: Employee) {
-    const url = `/profile/employee/${this.newEmp._id}`;
+  get name() {
+    return this.employeeUpdateForm.get('name');
+  }
+  get password() {
+    return this.employeeUpdateForm.get('password');
+  }
+  get phone() {
+    return this.employeeUpdateForm.get('phone');
+  }
+  get age() {
+    return this.employeeUpdateForm.get('age');
+  }
+  get gender() {
+    return this.employeeUpdateForm.get('gender');
+  }
+  get email() {
+    return this.employeeUpdateForm.get('email');
+  }
+  get addressStreet() {
+    return this.employeeUpdateForm.get('street');
+  }
+  get addressCity() {
+    return this.employeeUpdateForm.get('city');
+  }
+  get addressBuiling() {
+    return this.employeeUpdateForm.get('building');
+  }
 
-    this.empService.edit(emp).subscribe();
+  edit() {
+    const url = `/profile/employee/${this.id}`;
+    console.log(this.employeeUpdateForm.value);
+
+    this.empService.edit(this.employeeUpdateForm.value, this.id).subscribe();
     this.router.navigateByUrl(url);
   }
   cancel() {
-    const url = `/profile/employee/${this.newEmp._id}`;
+    const url = `/profile/employee/${this.id}`;
     this.router.navigateByUrl(url);
   }
 }
