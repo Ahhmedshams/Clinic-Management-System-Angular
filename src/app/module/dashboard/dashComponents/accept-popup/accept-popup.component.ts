@@ -10,7 +10,7 @@ import { ClinicService } from 'src/app/services/clinic.service';
 })
 export class AcceptPopupComponent implements OnInit {
  
- clinins:Clinic[]=[];
+  clinins:Clinic[]=[];
   messege:String ="";
   errorFlag:boolean=false;
   updated:boolean= false;
@@ -34,7 +34,7 @@ export class AcceptPopupComponent implements OnInit {
           this.messege = "Clinic is empty";
         }else{
           this.updated=true;
-         this.modalRef.close({status:this.updated,clininsID:this.clininsID})
+          this.modalRef.close({status:this.updated,clininsID:this.clininsID})
         }
       }
 

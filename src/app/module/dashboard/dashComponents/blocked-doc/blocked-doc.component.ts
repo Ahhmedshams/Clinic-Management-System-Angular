@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, Input, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -11,31 +11,31 @@ import { DoctorService } from 'src/app/services/doctor.service';
 
 import {NgConfirmService} from 'ng-confirm-box';
 import { ViewDoctorComponent } from '../view-doctor/view-doctor.component';
-import { Router } from '@angular/router';
-@Component({
-  selector: 'app-active-doc',
-  templateUrl: './active-doc.component.html',
-  styleUrls: ['./active-doc.component.css']
-})
-export class ActiveDocComponent {
-  modalRef: MdbModalRef<ViewDoctorComponent> | null = null;
+import { AcceptPopupComponent } from '../accept-popup/accept-popup.component';
 
+@Component({
+  selector: 'app-blocked-doc',
+  templateUrl: './blocked-doc.component.html',
+  styleUrls: ['./blocked-doc.component.css']
+})
+export class BlockedDocComponent {
   public dataSource!: MatTableDataSource<Doctor>;
   doctor:Doctor[]=[];
   displayedColumns: string[] = ['id', 'name', 'gender', 'email','phone','status','action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  modalRef: MdbModalRef<ViewDoctorComponent> | null = null;
+
   constructor(
     public doctorService:DoctorService,
-  private confirmService: NgConfirmService,
-  public dialog: MatDialog,
-  public modalService:MdbModalService,
-  private router:Router
+    private confirmService: NgConfirmService,
+    public modalService:MdbModalService,
+    public dialog: MatDialog
   ){}
 
   ngOnInit(){
-    this.doctorService.getActive().subscribe(data=>{
+    this.doctorService.getBlocked().subscribe(data=>{
       this.doctor = data;
       this.dataSource = new MatTableDataSource(this.doctor);
       this.dataSource.paginator = this.paginator;
@@ -47,12 +47,26 @@ export class ActiveDocComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
 
+  accept(id:Number)
+  {
+    this.doctorService.updateStatus(id,{status:"active"}).subscribe(data=>{})
+  }
+ 
+
+  unBlock(id: number) {
+    this.confirmService.showConfirm("Are you sure want  to Un Block this user?",
+     () => {
+      this.doctorService.updateStatus(id,{status:"active"}).subscribe(data=>{})
+    },
+    () => {
+      //yor logic if No clicked
+    })
+  }
 
   openView(doctor:any){
     this.modalRef = this.modalService.open(ViewDoctorComponent, {
@@ -64,17 +78,5 @@ export class ActiveDocComponent {
         
   }
 
-  Block(id: number) {
-    this.confirmService.showConfirm("Are you sure want  to block this user?",
-     () => {
-      this.doctorService.updateStatus(id,{status:"blocked"}).subscribe(data=>{})
-    },
-    () => {
-      //yor logic if No clicked
-    })
-  }
 
-  edit(id:Number){
-    this.router.navigate(['edit-doctor',id])
-  }
 }

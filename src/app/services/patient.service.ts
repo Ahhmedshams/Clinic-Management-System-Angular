@@ -22,6 +22,9 @@ export class PatientService {
   getActive(){
     return this.http.get<Patient[]>('http://localhost:8080/patient?status=active')
   }
+  getBlocked(){
+    return this.http.get<Patient[]>('http://localhost:8080/patient?status=blocked')
+  }
 
   getById(id:Number){
     return this.http.get<Patient>(this.baseUrl+id)
@@ -41,5 +44,22 @@ export class PatientService {
  getPatientAppt(id:Number){
   return this.http.get<Appointment[]>(this.baseUrl+id+"/appointment")
  }
+
+ addPatient(formData:any){
+  let Patient={
+    name:formData.fname+" "+formData.lname,
+    gender:formData.gender,
+    age:formData.age,
+    email:formData.email,
+    phone:formData.phone,
+    address:formData.address,
+    password:formData.password,
+    
+  }
+  console.log(Patient)
+  return this.http.post(this.baseUrl,Patient)
+ }
+
+
 
 }

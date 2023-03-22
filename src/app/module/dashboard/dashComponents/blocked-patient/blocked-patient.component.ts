@@ -3,41 +3,39 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-
-import { Doctor } from 'src/app/models/doctor';
-
-import { DoctorService } from 'src/app/services/doctor.service';
-
+import { Patient } from 'src/app/models/patient';
+import { PatientService } from 'src/app/services/patient.service';
 import {NgConfirmService} from 'ng-confirm-box';
-import { ViewDoctorComponent } from '../view-doctor/view-doctor.component';
+import { MdbModalService,MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { ViewPatientComponent } from '../view-patient/view-patient.component';
 import { Router } from '@angular/router';
-@Component({
-  selector: 'app-active-doc',
-  templateUrl: './active-doc.component.html',
-  styleUrls: ['./active-doc.component.css']
-})
-export class ActiveDocComponent {
-  modalRef: MdbModalRef<ViewDoctorComponent> | null = null;
 
-  public dataSource!: MatTableDataSource<Doctor>;
-  doctor:Doctor[]=[];
+@Component({
+  selector: 'app-blocked-patient',
+  templateUrl: './blocked-patient.component.html',
+  styleUrls: ['./blocked-patient.component.css']
+})
+export class BlockedPatientComponent {
+  modalRef: MdbModalRef<ViewPatientComponent> | null = null;
+  public dataSource!: MatTableDataSource<Patient>;
+  patient:Patient[]=[];
   displayedColumns: string[] = ['id', 'name', 'gender', 'email','phone','status','action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    public doctorService:DoctorService,
+    public patientService:PatientService,
   private confirmService: NgConfirmService,
   public dialog: MatDialog,
   public modalService:MdbModalService,
   private router:Router
+
   ){}
 
   ngOnInit(){
-    this.doctorService.getActive().subscribe(data=>{
-      this.doctor = data;
-      this.dataSource = new MatTableDataSource(this.doctor);
+    this.patientService.getBlocked().subscribe(data=>{
+      this.patient = data;
+      this.dataSource = new MatTableDataSource(this.patient);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
@@ -54,27 +52,25 @@ export class ActiveDocComponent {
   }
 
 
-  openView(doctor:any){
-    this.modalRef = this.modalService.open(ViewDoctorComponent, {
-      modalClass: ' modal-dialog-centered',
-      data: {
-        doctor,
-      },
-    });
-        
-  }
-
-  Block(id: number) {
+  unBlock(id: number) {
     this.confirmService.showConfirm("Are you sure want  to block this user?",
      () => {
-      this.doctorService.updateStatus(id,{status:"blocked"}).subscribe(data=>{})
+      this.patientService.updateStatus(id,{status:"active"}).subscribe(data=>{})
     },
     () => {
       //yor logic if No clicked
     })
   }
 
-  edit(id:Number){
-    this.router.navigate(['edit-doctor',id])
+  openView(Patient:any){
+    this.modalRef = this.modalService.open(ViewPatientComponent, {
+      modalClass: ' modal-dialog-centered',
+      data: {
+        Patient,
+      },
+    });
+        
   }
+  
+
 }

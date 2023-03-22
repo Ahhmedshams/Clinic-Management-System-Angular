@@ -10,6 +10,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import {NgConfirmService} from 'ng-confirm-box';
 import { MdbModalService,MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { ViewEmpComponent } from '../view-emp/view-emp.component';
+import { AcceptPopupComponent } from '../accept-popup/accept-popup.component';
 @Component({
   selector: 'app-pending-emp',
   templateUrl: './pending-emp.component.html',
@@ -75,6 +76,23 @@ openView(Emp:any){
       Emp,
     },
   });
+      
+}
+
+acceptPopup(docId:Number){
+  this.modalRef = this.modalService.open(AcceptPopupComponent, {
+    modalClass: 'modal-dialog-centered'
+  });
+  this.modalRef.onClose.subscribe((messege?) => {
+    if(messege.status){
+      this.empService.accept(docId,{clinicId:messege.id,
+        status: "active"}).subscribe(data=>{
+          this.ngOnInit()
+          
+        })
+    }
+    
+  })
       
 }
 

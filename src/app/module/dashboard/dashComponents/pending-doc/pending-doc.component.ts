@@ -28,9 +28,9 @@ export class PendingDocComponent {
 
   constructor(
     public doctorService:DoctorService,
-  private confirmService: NgConfirmService,
-  public modalService:MdbModalService,
-  public dialog: MatDialog
+    private confirmService: NgConfirmService,
+    public modalService:MdbModalService,
+    public dialog: MatDialog
   ){}
 
   ngOnInit(){
@@ -79,13 +79,13 @@ export class PendingDocComponent {
         
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(BlockDialog, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
+  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  //   this.dialog.open(BlockDialog, {
+  //     width: '250px',
+  //     enterAnimationDuration,
+  //     exitAnimationDuration,
+  //   });
+  // }
 
   acceptPopup(docId:Number){
     this.modalRef = this.modalService.open(AcceptPopupComponent, {

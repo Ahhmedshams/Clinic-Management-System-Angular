@@ -18,6 +18,9 @@ export class DoctorService {
   getPending(){
     return this.http.get<Doctor[]>('http://localhost:8080/doctors?status=pending')
   }
+  getBlocked(){
+    return this.http.get<Doctor[]>('http://localhost:8080/doctors?status=blocked')
+  }
   getActive(){
     return this.http.get<Doctor[]>('http://localhost:8080/doctors?status=active')
   }
@@ -43,6 +46,26 @@ export class DoctorService {
  }
  getDocAppt(id:Number){
   return this.http.get<Appointment[]>(this.baseUrl+id+"/appointment")
+ }
+
+ addDoc(formData:any){
+  let doctor={
+    name:formData.fname+" "+formData.lname,
+    gender:formData.gender,
+    age:formData.age,
+    email:formData.email,
+    phone:formData.phone,
+    speciality:formData.speciality,
+    yearsOfExperience:formData.yearsOfExperience,
+    address:formData.address,
+    password:formData.password,
+    status: 'active',
+    price:formData.price ,
+    clinicId:formData.clinic
+
+  }
+  console.log(doctor)
+  return this.http.post(this.baseUrl,doctor)
  }
  
 }

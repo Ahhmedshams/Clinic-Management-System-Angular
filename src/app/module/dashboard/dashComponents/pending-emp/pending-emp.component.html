@@ -46,7 +46,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <td mat-cell *matCellDef="let row">
           <button mat-button (click)="openView(row)">View</button>
-          <button  mat-button color="primary" (click)="accept(row._id)">Accept</button>
+          <button  mat-button color="primary" (click)="acceptPopup(row._id)">Accept</button>
           <button mat-button color="warn" (click)="Block(row._id)">Block</button>
         </td>
       </ng-container>

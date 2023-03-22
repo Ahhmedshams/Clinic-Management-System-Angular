@@ -10,7 +10,7 @@ interface SideNavToggle{
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.scss'],
+  styleUrls: ['./sidenav.component.css'],
   animations:[
     trigger('fadeInOut',[
       transition(':enter',[
@@ -31,7 +31,7 @@ interface SideNavToggle{
         animate('800ms',
         keyframes([
           style({transform: 'rotate(0deg)',offset:'0'}),
-          style({transform: 'rotate(9turn)',offset:'1'})
+          style({transform: 'rotate(1turn)',offset:'1'})
         ])
         )
       ])

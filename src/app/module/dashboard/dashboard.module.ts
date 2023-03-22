@@ -30,7 +30,17 @@ import {  MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ViewDoctorComponent } from './dashComponents/view-doctor/view-doctor.component';
 import { ViewEmpComponent } from './dashComponents/view-emp/view-emp.component';
 import { ViewPatientComponent } from './dashComponents/view-patient/view-patient.component';
-import { FormsModule } from '@angular/forms';
+import { AddDocComponent } from './dashComponents/add-doc/add-doc.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import { AddPatientComponent } from './dashComponents/add-patient/add-patient.component';
+import { AddEmpComponent } from './dashComponents/add-emp/add-emp.component';
+import { BlockedComponent } from './blocked/blocked.component';
+import { BlockedEmpComponent } from './dashComponents/blocked-emp/blocked-emp.component';
+import { BlockedPatientComponent } from './dashComponents/blocked-patient/blocked-patient.component';
+import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.component'
+
 
 @NgModule({
   declarations: [
@@ -49,7 +59,14 @@ import { FormsModule } from '@angular/forms';
     AcceptPopupComponent,
     ViewDoctorComponent,
     ViewEmpComponent,
-    ViewPatientComponent
+    ViewPatientComponent,
+    AddDocComponent,
+    AddPatientComponent,
+    AddEmpComponent,
+    BlockedComponent,
+    BlockedEmpComponent,
+    BlockedPatientComponent,
+    BlockedDocComponent
     ],
   imports: [
     CommonModule,
@@ -66,7 +83,11 @@ import { FormsModule } from '@angular/forms';
     NgConfirmModule,
     MatTabsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule, 
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatIconModule
+    
   ]
   ,
   providers: [MdbModalService]

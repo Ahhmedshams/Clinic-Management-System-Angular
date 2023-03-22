@@ -8,6 +8,7 @@ import { PatientService } from 'src/app/services/patient.service';
 import {NgConfirmService} from 'ng-confirm-box';
 import { MdbModalService,MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { ViewPatientComponent } from '../view-patient/view-patient.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-active-patient',
   templateUrl: './active-patient.component.html',
@@ -27,6 +28,7 @@ export class ActivePatientComponent {
   private confirmService: NgConfirmService,
   public dialog: MatDialog,
   public modalService:MdbModalService,
+  private router:Router
 
   ){}
 
@@ -68,6 +70,9 @@ export class ActivePatientComponent {
       },
     });
         
+  }
+  edit(id:Number){
+    this.router.navigate(['edit-patient',id])
   }
 
 }

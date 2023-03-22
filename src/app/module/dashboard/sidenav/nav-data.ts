@@ -14,5 +14,11 @@ export const navbarData = [
       routerLink: 'pending',
       icon:'fa fa-server',
       label:'pending'
-     } 
+   }
+   ,
+   {
+      routerLink: 'blocked',
+      icon:'fa fa-server',
+      label:'Blocked'
+   }
 ]
