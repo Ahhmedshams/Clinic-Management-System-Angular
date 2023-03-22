@@ -13,6 +13,9 @@ export class MedicineService {
   getAll(){
     return this.http.get<Medicine[]>(this.baseUrl)
   }
+  getArchive(){
+    return this.http.get<Medicine[]>(this.baseUrl+"archive")
+  }
   getById(id:Number){
     return this.http.get<Medicine>(this.baseUrl+id)
   }

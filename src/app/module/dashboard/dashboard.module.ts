@@ -18,7 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 import {MatTabsModule} from '@angular/material/tabs';
-import { HomeComponent } from '../../components/home/home.component';
+//import { HomeComponent } from '../../components/home/home.component';
 import { PendingDocComponent } from './dashComponents/pending-doc/pending-doc.component';
 import { PendingEmpComponent } from './dashComponents/pending-emp/pending-emp.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -40,6 +40,8 @@ import { BlockedComponent } from './blocked/blocked.component';
 import { BlockedEmpComponent } from './dashComponents/blocked-emp/blocked-emp.component';
 import { BlockedPatientComponent } from './dashComponents/blocked-patient/blocked-patient.component';
 import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.component'
+import { AppointmentComponent } from './appointment/appointment.component';
+import { MedicineComponent } from './medicine/medicine.component';
 
 
 @NgModule({
@@ -50,7 +52,7 @@ import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.co
     SidenavComponent,
     ReportComponent,
     PendingComponent,
-    HomeComponent,
+    // HomeComponent,
     PendingDocComponent,
     PendingEmpComponent,
     ActiveDocComponent,
@@ -66,7 +68,9 @@ import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.co
     BlockedComponent,
     BlockedEmpComponent,
     BlockedPatientComponent,
-    BlockedDocComponent
+    BlockedDocComponent,
+    AppointmentComponent,
+    MedicineComponent
     ],
   imports: [
     CommonModule,

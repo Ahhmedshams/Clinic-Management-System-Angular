@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlockedComponent } from './blocked/blocked.component';
+import { AppointmentComponent } from './appointment/appointment.component';
 import { DashboardComponent } from './dashboard.component';
 import { AddDocComponent } from './dashComponents/add-doc/add-doc.component';
 import { AddEmpComponent } from './dashComponents/add-emp/add-emp.component';
@@ -8,8 +9,16 @@ import { AddPatientComponent } from './dashComponents/add-patient/add-patient.co
 import { MainComponent } from './main/main.component';
 import { PendingComponent } from './pending/pending.component';
 import { ReportComponent } from './report/report.component';
+import { MedicineComponent } from './medicine/medicine.component';
+import { ReportComponent } from './report/report.component';
 
-
+// const routes: Routes = [
+//   {path:'',
+//   children:[
+    
+//     //{ path: 'about', component: AboutComponent}
+// ]}
+// ];
 const routes : Routes = [
   { path: '', component:DashboardComponent , children:[
     { path: 'main', component: MainComponent }, 
@@ -23,6 +32,11 @@ const routes : Routes = [
     { path: 'edit-patient/:id', component: AddPatientComponent }, 
     { path: 'edit-employee/:id', component: AddEmpComponent },
 
+    { path: 'main', component: MainComponent },
+    { path: 'report', component: ReportComponent },
+    { path: 'medicines', component: MedicineComponent },
+    { path: 'appointment', component: AppointmentComponent },
+    { path: 'appointment/details', component: AppointmentComponent },
   ]},
 ]
 
