@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+form {
+  margin-top: 10px;
+  height: 90vh;
+  width: 40vw;
+  margin-left: 22vw;
+}
+mat-icon {
+  color: gray;
+  border: none;
+}
+.container {
+  background-image: url(../../../../assets/img/19366.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
