@@ -1,14 +1,14 @@
 <div class="container">
   <form [formGroup]="employeeUpdateForm" class="row" (ngSubmit)="edit()">
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input
-        type="text"
         matInput
         formControlName="name"
         [errorStateMatcher]="matcher"
         placeholder="Your Name"
       />
+      <mat-icon mat-icon-button matSuffix>person</mat-icon>
       <mat-error *ngIf="name?.errors?.['name'] && !name?.errors?.['required']">
         Please enter a valid name</mat-error
       >
@@ -16,8 +16,7 @@
         Name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input
         type="email"
@@ -26,7 +25,7 @@
         [errorStateMatcher]="matcher"
         placeholder="Your Email"
       />
-
+      <mat-icon mat-icon-button matSuffix>email</mat-icon>
       <mat-error
         *ngIf="email?.errors?.['email'] && !email?.errors?.['required']"
       >
@@ -36,7 +35,7 @@
         Email is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
       <input
         type="password"
@@ -64,15 +63,16 @@
         Password is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Phone</mat-label>
       <input
-        type="text"
+        type="number"
         matInput
         formControlName="phone"
         [errorStateMatcher]="matcher"
         placeholder="Your phone"
       />
+      <mat-icon mat-icon-button matSuffix>phone</mat-icon>
       <mat-error
         *ngIf="phone?.errors?.['phone'] && !phone?.errors?.['required']"
       >
@@ -82,15 +82,17 @@
         phone is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Gender</mat-label>
       <input
         type="text"
         matInput
         formControlName="gender"
         [errorStateMatcher]="matcher"
-        placeholder="Your phone"
+        placeholder="Your gender"
       />
+      <mat-icon mat-icon-button matSuffix>face</mat-icon>
+
       <mat-error
         *ngIf="gender?.errors?.['gender'] && !gender?.errors?.['required']"
       >
@@ -102,7 +104,7 @@
     </mat-form-field>
     <!-- Address-City -->
     <div formGroupName="address">
-      <mat-form-field>
+      <mat-form-field appearance="fill" style="width: 30%">
         <mat-label>City</mat-label>
         <input
           type="text"
@@ -111,6 +113,8 @@
           [errorStateMatcher]="matcher"
           placeholder="Ex. Cairo"
         />
+        <mat-icon mat-icon-button matSuffix>location_city</mat-icon>
+
         <mat-error
           *ngIf="addressCity?.errors?.['pattern'] && !addressCity?.errors?.['required']"
         >
@@ -122,7 +126,7 @@
         </mat-error>
       </mat-form-field>
       <!-- Address-Street -->
-      <mat-form-field>
+      <mat-form-field appearance="fill" style="width: 30%" class="ms-2">
         <mat-label>Street</mat-label>
         <input
           type="text"
@@ -131,13 +135,13 @@
           [errorStateMatcher]="matcher"
           placeholder="Ex. ElGomla"
         />
+        <mat-icon mat-icon-button matSuffix>streetview</mat-icon>
 
         <mat-error *ngIf="addressStreet?.errors?.['required']">
           Street is <strong>required</strong>
         </mat-error>
       </mat-form-field>
-      <!-- Address-Country -->
-      <mat-form-field>
+      <mat-form-field appearance="fill" style="width: 30%" class="ms-2">
         <mat-label>Builing Number</mat-label>
         <input
           type="number"
@@ -145,22 +149,24 @@
           formControlName="building"
           [errorStateMatcher]="matcher"
         />
+        <mat-icon mat-icon-button matSuffix>apartment</mat-icon>
 
         <mat-error *ngIf="addressBuiling?.errors?.['required']">
           Builing is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </div>
-    <button class="btn btn-danger mx-2 w-25" type="button" (click)="cancel()">
-      Cancel
-    </button>
-
-    <button
-      class="btn btn-primary mx-2 w-25"
-      type="submit"
-      [disabled]="!employeeUpdateForm.valid"
-    >
-      Update Profile
-    </button>
+    <div class="col-sm-6 col-md-4 col-lg-4">
+      <button class="btn btn-danger" type="button" (click)="cancel()">
+        Cancel
+      </button>
+      <button
+        class="btn btn-primary ms-3"
+        type="submit"
+        [disabled]="!employeeUpdateForm.valid"
+      >
+        Update
+      </button>
+    </div>
   </form>
 </div>

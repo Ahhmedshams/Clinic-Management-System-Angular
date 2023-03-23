@@ -24,8 +24,8 @@ export class PatientService {
     return this.http.delete(this.baseUrl + id);
   }
 
-  edit(patient: Patient) {
-    return this.http.patch(this.baseUrl + patient._id, patient);
+  edit(patient: Patient, id: Number) {
+    return this.http.patch(this.baseUrl + id, patient);
   }
 
   updateStatus(id: Number, status: any) {

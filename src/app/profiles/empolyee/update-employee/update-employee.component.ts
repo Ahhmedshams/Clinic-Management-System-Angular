@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { MyErrorStateMatcher } from 'src/app/models/ErrorStateMatcher';
-
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateDialogComponent } from 'src/app/update-dialog/update-dialog.component';
 @Component({
   selector: 'app-update-employee',
   templateUrl: './update-employee.component.html',
@@ -18,6 +19,7 @@ export class UpdateEmployeeComponent implements OnInit {
   id: Number = 0;
 
   constructor(
+    private dialog: MatDialog,
     private fb: FormBuilder,
     public empService: EmployeeService,
     public activatedRouter: ActivatedRoute,
@@ -88,6 +90,11 @@ export class UpdateEmployeeComponent implements OnInit {
 
     this.empService.edit(this.employeeUpdateForm.value, this.id).subscribe();
     this.router.navigateByUrl(url);
+    this.dialog.open(UpdateDialogComponent, {
+      data: {
+        message: `${this.employeeUpdateForm.value.name} your data has been updated successfully!`,
+      },
+    });
   }
   cancel() {
     const url = `/profile/employee/${this.id}`;
