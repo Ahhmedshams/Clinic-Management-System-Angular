@@ -10,7 +10,7 @@ export class TokenInterceptorService  implements HttpInterceptor{
 
   constructor(public authService:AuthService) { }
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> 
-  {//5555 de7k
+  {
     
     let tokenizedReq=req.clone({
       setHeaders:{
