@@ -10,15 +10,8 @@ import { MainComponent } from './main/main.component';
 import { PendingComponent } from './pending/pending.component';
 import { ReportComponent } from './report/report.component';
 import { MedicineComponent } from './medicine/medicine.component';
-import { ReportComponent } from './report/report.component';
 
-// const routes: Routes = [
-//   {path:'',
-//   children:[
-    
-//     //{ path: 'about', component: AboutComponent}
-// ]}
-// ];
+
 const routes : Routes = [
   { path: '', component:DashboardComponent , children:[
     { path: 'main', component: MainComponent }, 

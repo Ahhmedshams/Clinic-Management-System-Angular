@@ -8,3 +8,9 @@
 .back{
     margin-left: 40px;
 }
+
+.docImg{
+    width: 5rem;
+    display: flex;
+    justify-content: right !important;
+}
