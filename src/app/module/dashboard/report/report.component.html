@@ -11,23 +11,21 @@
 <ng-container *ngFor="let item of doctors">
     
         <mat-card class="example-card col-12 col-md-5 m-2">
-            <mat-card-header> 
-            <mat-card-title>{{item.name}}</mat-card-title>
-            <mat-card-subtitle>{{item.speciality}}</mat-card-subtitle>
-            </mat-card-header>
+            <mat-card-header>
+                <mat-card-title-group>
+                  <mat-card-title class="capitalize">{{item.name}}</mat-card-title>
+                  <mat-card-subtitle class="capitalize">{{item.speciality}}</mat-card-subtitle>
+                  <img mat-card-md-image src="../../../../assets/images/doc.jpg"  alt="Image of a Shiba Inu">
+                </mat-card-title-group>
+              </mat-card-header>
             <mat-card-content>
-                
-                <!-- <img src="./../../../../assets/images/doc.jpg" class="docImg" alt="doctor"> -->
-            <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-            </p>
-            </mat-card-content>
+                <div class="capitalize">Experince: {{item.yearsOfExperience}} Year</div>
+                <div class="capitalize">City: {{item.address.city}}</div>
+                <div class="capitalize">Price: {{item.price}}</div>
+                </mat-card-content>
             <mat-card-actions>
             <button mat-button>Book</button>
             </mat-card-actions>
         </mat-card>
 </ng-container>
 </div>
-

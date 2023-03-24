@@ -16,21 +16,21 @@
            <mat-card-header>
                
              <mat-card-title>Mr.{{Emp?.name}}</mat-card-title>
-             <mat-card-subtitle class="Speciality">Clinic: {{Emp?.clinicId.name}}</mat-card-subtitle>
+             <mat-card-subtitle class="capitalize">Clinic: {{Emp?.clinicId?.name}}</mat-card-subtitle>
            </mat-card-header>
            <mat-card-content>
                <ul class="list-group list-group-flush">
-                   <li class="list-group-item">Email: {{Emp?.email}} </li>
-                   <li class="list-group-item">Phone: {{Emp?.phone}} </li>
-                   <li class="list-group-item">Gender: {{Emp?.gender}} </li>
-                   <li class="list-group-item">Clinin Name: {{Emp?.clinicId.name}} </li>
-                   <li class="list-group-item">Status: {{Emp?.status}}</li>
-                   <li class="list-group-item">
+                   <li class="list-group-item capitalize">Email: {{Emp?.email}} </li>
+                   <li class="list-group-item capitalize">Phone: {{Emp?.phone}} </li>
+                   <li class="list-group-item capitalize">Gender: {{Emp?.gender}} </li>
+                   <li class="list-group-item capitalize">Clinin Name: {{Emp?.clinicId?.name}} </li>
+                   <li class="list-group-item capitalize">Status: {{Emp?.status}}</li>
+                   <li class="list-group-item capitalize">
                        <details>
                            <summary>Address</summary>
-                           <li class="list-group-item">City: {{Emp?.address.city}}</li>
-                           <li class="list-group-item">Street: {{Emp?.address.street}}</li>
-                           <li class="list-group-item">building Number: {{Emp?.address.building }}</li>
+                           <li class="list-group-item capitalize">City: {{Emp?.address.city}}</li>
+                           <li class="list-group-item capitalize">Street: {{Emp?.address.street}}</li>
+                           <li class="list-group-item capitalize">building Number: {{Emp?.address.building }}</li>
                          </details></li>
                  </ul>
              

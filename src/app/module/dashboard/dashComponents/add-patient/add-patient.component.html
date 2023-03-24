@@ -56,18 +56,18 @@
       
       
       <div formGroupName="address" class="row ">
-          <mat-form-field class="col-12">
+          <mat-form-field class="col-12 col-md-4">
               <input matInput formControlName="city" placeholder="City"  id="city"  />
               <mat-error *ngIf="patientCity?.errors?.['required']">City is Required</mat-error>
               <mat-icon matSuffix>location_on</mat-icon>
           </mat-form-field>
   
-          <mat-form-field class="ms-1" class="col-12">
+          <mat-form-field class="ms-1" class="col-12 col-md-4">
               <input matInput formControlName="street" placeholder="Street"  id="street"  />
               <mat-icon matSuffix>location_on</mat-icon>
           </mat-form-field>
   
-          <mat-form-field class="ms-1" class="col-12">
+          <mat-form-field class="ms-1" class="col-12 col-md-4">
               <input matInput formControlName="building" min="1" placeholder="Building" type="number" id="building"  />
               <mat-icon matSuffix>home</mat-icon>
           </mat-form-field>

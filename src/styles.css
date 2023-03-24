@@ -21,3 +21,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .card .card-body {
     padding: 1rem 1.5rem;
 }
+.capitalize{
+    text-transform: capitalize;
+}
+
