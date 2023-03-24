@@ -62,6 +62,11 @@ export class PatientRegisterComponent {
   }
   patientRegister()
   {
-    this.authService.ptRegister(this.patientRegisterForm.value).subscribe(data=>console.log(data));
+    this.authService.ptRegister(this.patientRegisterForm.value).subscribe(
+      data=>console.log(data),
+      err=>{
+          this._snackBar.open(err.error.Error,"ok");
+        }
+     )
   }
 }

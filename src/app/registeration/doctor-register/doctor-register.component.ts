@@ -64,6 +64,11 @@ export class DoctorRegisterComponent {
   doctorRegister()
   {
     //console.log(this.doctorRegisterForm.value)
-     this.authService.dcRegister(this.doctorRegisterForm.value).subscribe(data=>console.log(data));
+     this.authService.dcRegister(this.doctorRegisterForm.value).subscribe(
+      data=>console.log(data),
+      err=>{
+          this._snackBar.open(err.error.Error,"ok");
+        }
+     )
   }
 }
