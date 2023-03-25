@@ -9,9 +9,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { AppointmentComponent } from './appointment/appointment.component';
+import { TableModule } from 'primeng/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ButtonModule } from 'primeng/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { NgToastModule } from 'ng-angular-popup';
+import { NgConfirmModule } from 'ng-confirm-box';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
-  declarations: [GetPatientComponent, UpdatePatientComponent],
+  declarations: [
+    GetPatientComponent,
+    UpdatePatientComponent,
+    AppointmentComponent,
+  ],
   imports: [
     CommonModule,
     ProfilesRoutingModule,
@@ -22,6 +35,15 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    TableModule,
+    ButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule,
+    NgToastModule,
+    NgConfirmModule,
+    MatTabsModule,
   ],
   exports: [GetPatientComponent, UpdatePatientComponent],
 })
