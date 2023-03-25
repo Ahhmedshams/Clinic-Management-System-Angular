@@ -26,7 +26,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ShowinfoComponent } from './components/prescription/showinfo/showinfo.component';
 import { HeroComponent } from './components/home/hero/hero.component';
 import {MatBadgeModule} from '@angular/material/badge';
-
+import { AppointmentComponent } from './appointment/appointment.component';
+import { DividerModule } from 'primeng/divider';
+import { RatingModule } from 'primeng/rating';
+import { ListboxModule } from 'primeng/listbox';
 @NgModule({
   declarations: [
    HomepageComponent,
@@ -42,6 +45,7 @@ import {MatBadgeModule} from '@angular/material/badge';
      MedicensearchComponent,
     AddediteformComponent,
     ShowinfoComponent,
+    AppointmentComponent,
   ],
   imports: [
     CommonModule,
@@ -57,7 +61,10 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    DividerModule,
+    RatingModule,
+    ListboxModule
    
 
     
