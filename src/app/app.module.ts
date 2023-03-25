@@ -9,12 +9,19 @@ import { HeaderComponent } from './core/header/header.component';
 import {DashboardModule} from './module/dashboard/dashboard.module';
 import {HttpClientModule}  from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DividerModule } from 'primeng/divider';
+import { HomeComponent } from './components/home/home.component';
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms'; 
+import { ListboxModule } from 'primeng/listbox';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
+    HomeComponent,
+    TimeFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -23,7 +30,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     DashboardModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DividerModule,
+    RatingModule,
+    FormsModule ,
+    ListboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
