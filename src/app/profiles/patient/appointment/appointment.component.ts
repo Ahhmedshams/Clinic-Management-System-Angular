@@ -35,8 +35,10 @@ export class AppointmentComponent implements OnInit {
     this.patientService.getPatientAppt(this.id).subscribe((res) => {
       console.log(Object.keys(res));
       console.log(res[0]);
+      console.log(res?.data);
 
-      this.appointments = res;
+
+      this.appointments = res?.data;
       this.dataSource = new MatTableDataSource(this.appointments);
       // this.dataSource.paginator = this.paginator;
       // this.dataSource.sort = this.sort;
