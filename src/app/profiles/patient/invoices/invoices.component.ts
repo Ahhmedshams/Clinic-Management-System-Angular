@@ -16,12 +16,41 @@ import { PatientService } from 'src/app/services/patient.service';
 export class InvoicesComponent implements OnInit {
   public dataSource!: MatTableDataSource<Invoice>;
   invoices: Invoice[] = [];
-  displayedColumns: string[] = ['Payment Type', 'Doctor Name', 'Date', 'Time'];
+  displayedColumns: string[] = [
+    'Payment Type',
+    'Total Cost',
+    'Doctor Name',
+    'Date',
+  ];
   id: Number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor() {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  constructor(
+    public appoinmentService: AppointmentService,
+    public router: Router,
+    public activatedRouter: ActivatedRoute,
+    public patientService: PatientService
+  ) {}
+  ngOnInit() {
+    this.activatedRouter.params.subscribe((i) => {
+      this.id = i['id'];
+    });
+    this.patientService.getPatientInovice(this.id).subscribe((res) => {
+      this.invoices = res?.data;
+      console.log(this.invoices);
+
+      this.dataSource = new MatTableDataSource(this.invoices);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }

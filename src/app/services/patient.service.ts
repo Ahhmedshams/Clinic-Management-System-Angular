@@ -37,4 +37,7 @@ export class PatientService {
       `http://localhost:8080/patient/${id}/appointment`
     );
   }
+  getPatientInovice(id: Number) {
+    return this.http.get<any>(`http://localhost:8080/patient/${id}/invoice`);
+  }
 }
