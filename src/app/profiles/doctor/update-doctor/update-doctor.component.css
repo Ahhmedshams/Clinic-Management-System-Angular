@@ -12,8 +12,8 @@ mat-icon {
   color: gray;
   border: none;
 }
-.container {
-  background-image: url(../../../../assets/img/19366.jpg);
+body {
+  background-image: url(../../../../assets/img/3.jpeg);
   background-size: cover;
   background-position: center;
   height: 100vh;
