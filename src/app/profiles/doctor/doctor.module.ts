@@ -8,9 +8,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { GetDoctorComponent } from './get-doctor/get-doctor.component';
 import { UpdateDoctorComponent } from './update-doctor/update-doctor.component';
+import { DocAppointmentComponent } from './appointment/appointment.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { TableModule } from 'primeng/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ButtonModule } from 'primeng/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { NgToastModule } from 'ng-angular-popup';
+import { NgConfirmModule } from 'ng-confirm-box';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CalenderComponent } from './calender/calender.component';
 
 @NgModule({
-  declarations: [GetDoctorComponent, UpdateDoctorComponent],
+  declarations: [GetDoctorComponent, UpdateDoctorComponent, DocAppointmentComponent, CalenderComponent],
   imports: [
     CommonModule,
     ProfilesRoutingModule,
@@ -20,6 +32,16 @@ import { UpdateDoctorComponent } from './update-doctor/update-doctor.component';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
+    TableModule,
+    ButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule,
+    NgToastModule,
+    NgConfirmModule,
+    MatTabsModule,
   ],
   exports: [GetDoctorComponent, UpdateDoctorComponent],
 })

@@ -3,9 +3,10 @@
     <div class="col-md-6 border-right">
       <div class="d-flex flex-column align-items-center text-center">
         <img
-          class="rounded-circle mt-5"
-          width="150px"
-          src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+          class="rounded-5 mt-5"
+          width="250px"
+          height="200px"
+          src="../../../../assets/img/doc.jpg"
         /><span class="font-weight-bold"> {{ docObj.name }} </span
         ><span class="text-black-50"> {{ docObj.email }} </span><span> </span>
       </div>
@@ -58,10 +59,23 @@
       </div>
       <div class="mt-5 col-md-12">
         <button class="btn btn-primary profile-button mx-5" type="button">
-          <a
-            [routerLink]="['/profile/doctor/', 'update', docObj._id]"
+          <a [routerLink]="['/profile/doctor/', 'update', docObj._id]"
             routerLinkActive="router-link-active"
             >Update Your Profile</a
+          >
+        </button>
+        <button class="btn btn-primary profile-button mx-5" type="button">
+          <a
+            [routerLink]="['/profile/doctor/', 'appointment', docObj._id]"
+            routerLinkActive="router-link-active"
+            >My Appointments</a
+          >
+        </button>
+        <button class="btn btn-primary profile-button mt-2 mx-5" type="button">
+          <a
+            [routerLink]="['/profile/doctor/', 'calender', docObj._id]"
+            routerLinkActive="router-link-active"
+            >Get Calener</a
           >
         </button>
       </div>

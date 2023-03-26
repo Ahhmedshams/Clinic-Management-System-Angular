@@ -9,6 +9,9 @@ import { UpdateDoctorComponent } from './doctor/update-doctor/update-doctor.comp
 import { AppointmentComponent } from './patient/appointment/appointment.component';
 import { InvoicesComponent } from './patient/invoices/invoices.component';
 import { AllAppoinmentsComponent } from './empolyee/all-appoinments/all-appoinments.component';
+import { DocAppointmentComponent } from './doctor/appointment/appointment.component';
+import { CalenderComponent } from './doctor/calender/calender.component';
+
 const routes: Routes = [
   { path: 'patient/:id', component: GetPatientComponent },
   { path: 'patient/update/:id', component: UpdatePatientComponent },
@@ -21,6 +24,8 @@ const routes: Routes = [
 
   { path: 'doctor/:id', component: GetDoctorComponent },
   { path: 'doctor/update/:id', component: UpdateDoctorComponent },
+  { path: 'doctor/appointment/:id', component: DocAppointmentComponent },
+  { path: 'doctor/calender/:id', component: CalenderComponent },
 ];
 
 @NgModule({
