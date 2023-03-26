@@ -33,7 +33,7 @@ export class PatientService {
   }
 
   getPatientAppt(id: Number) {
-    return this.http.get<Appointment[]>(
+    return this.http.get<any>(
       `http://localhost:8080/patient/${id}/appointment`
     );
   }
