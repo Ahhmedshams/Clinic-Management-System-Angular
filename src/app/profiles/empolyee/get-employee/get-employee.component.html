@@ -60,6 +60,13 @@
             >Update Your Profile</a
           >
         </button>
+        <button class="btn btn-primary profile-button mx-5" type="button">
+          <a
+            [routerLink]="['/profile/employee/', 'allAppointments', empObj._id]"
+            routerLinkActive="router-link-active"
+            >All Appointments</a
+          >
+        </button>
       </div>
     </div>
   </div>

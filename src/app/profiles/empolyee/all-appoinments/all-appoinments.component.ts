@@ -5,17 +5,23 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Appointment } from 'src/app/models/appointment';
 import { AppointmentService } from 'src/app/services/appointment.service';
-import { PatientService } from 'src/app/services/patient.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
-  selector: 'app-appointment',
-  templateUrl: './appointment.component.html',
-  styleUrls: ['./appointment.component.css'],
+  selector: 'app-all-appoinments',
+  templateUrl: './all-appoinments.component.html',
+  styleUrls: ['./all-appoinments.component.css'],
 })
-export class AppointmentComponent implements OnInit {
+export class AllAppoinmentsComponent implements OnInit {
   public dataSource!: MatTableDataSource<Appointment>;
-  appointments: Appointment[] = [];
-  displayedColumns: string[] = ['Doctor Name', 'Date', 'Time', 'Clinic'];
+  allAppointments: Appointment[] = [];
+  displayedColumns: string[] = [
+    'Doctor Name',
+    'Patient Name',
+    'Date',
+    'Time',
+    'Clinic',
+  ];
   id: Number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -24,21 +30,17 @@ export class AppointmentComponent implements OnInit {
     public appoinmentService: AppointmentService,
     public router: Router,
     public activatedRouter: ActivatedRoute,
-    public patientService: PatientService
+    public empService: EmployeeService,
+    public appointmentService: AppointmentService
   ) {}
-
-  ngOnInit() {
-    this.activatedRouter.params.subscribe((i) => {
-      this.id = i['id'];
-    });
-    this.patientService.getPatientAppt(this.id).subscribe((res) => {
-      this.appointments = res?.data;
-      this.dataSource = new MatTableDataSource(this.appointments);
+  ngOnInit(): void {
+    this.appointmentService.getAll().subscribe((res) => {
+      this.allAppointments = res;
+      this.dataSource = new MatTableDataSource(this.allAppointments);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
   }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

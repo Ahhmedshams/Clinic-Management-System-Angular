@@ -7,14 +7,18 @@ import { UpdateEmployeeComponent } from './empolyee/update-employee/update-emplo
 import { GetDoctorComponent } from './doctor/get-doctor/get-doctor.component';
 import { UpdateDoctorComponent } from './doctor/update-doctor/update-doctor.component';
 import { AppointmentComponent } from './patient/appointment/appointment.component';
-
+import { InvoicesComponent } from './patient/invoices/invoices.component';
+import { AllAppoinmentsComponent } from './empolyee/all-appoinments/all-appoinments.component';
 const routes: Routes = [
   { path: 'patient/:id', component: GetPatientComponent },
   { path: 'patient/update/:id', component: UpdatePatientComponent },
   { path: 'patient/appointment/:id', component: AppointmentComponent },
+  { path: 'patient/invoice/:id', component: InvoicesComponent },
 
   { path: 'employee/:id', component: GetEmployeeComponent },
   { path: 'employee/update/:id', component: UpdateEmployeeComponent },
+  { path: 'employee/allAppointments/:id', component: AllAppoinmentsComponent },
+
   { path: 'doctor/:id', component: GetDoctorComponent },
   { path: 'doctor/update/:id', component: UpdateDoctorComponent },
 ];

@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <div class="mt-5 col-md-12">
+      <div class="mt-5 col-md-6">
         <button class="btn btn-primary profile-button mx-5" type="button">
           <a
             [routerLink]="['/profile/patient/', 'update', patientObj._id]"
@@ -53,11 +53,18 @@
             >Update Your Profile</a
           >
         </button>
-        <button class="btn btn-primary profile-button mx-5" type="button">
+        <button class="btn btn-primary profile-button mx-5 mt-5" type="button">
           <a
             [routerLink]="['/profile/patient/', 'appointment', patientObj._id]"
             routerLinkActive="router-link-active"
             >My Appointments</a
+          >
+        </button>
+        <button class="btn btn-primary profile-button mx-5 mt-5" type="button">
+          <a
+            [routerLink]="['/profile/patient/', 'invoice', patientObj._id]"
+            routerLinkActive="router-link-active"
+            >My Invoices</a
           >
         </button>
       </div>

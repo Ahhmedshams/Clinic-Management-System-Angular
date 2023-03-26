@@ -19,11 +19,13 @@ import { MatCardModule } from '@angular/material/card';
 import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 import { MatTabsModule } from '@angular/material/tabs';
+import { InvoicesComponent } from './invoices/invoices.component';
 @NgModule({
   declarations: [
     GetPatientComponent,
     UpdatePatientComponent,
     AppointmentComponent,
+    InvoicesComponent,
   ],
   imports: [
     CommonModule,
