@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { ListboxModule } from 'primeng/listbox';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
+import { ButtonModule } from 'primeng/button';
     
 
 @NgModule({
@@ -38,7 +38,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     DividerModule,
     RatingModule,
     FormsModule ,
-    ListboxModule
+    ListboxModule,
+    ButtonModule
     
   ],
   bootstrap: [AppComponent]

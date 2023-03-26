@@ -8,17 +8,18 @@
                 <img src="../../../assets/images/doc.jpg" alt="">
               </div>
               <div class="col-9 m-2 ">
-                <h1>Doctor: {{doctor.name}}</h1>
-                <h3>Consultant of {{doctor.speciality}}</h3>
-                <h3>Experience : {{doctor.yearsOfExperience}} year</h3>
+                <h1 class="capitalize" >Doctor <p class="cNVbvo">{{doctor.name}}</p> </h1>
+                <h3 class="capitalize">Consultant of {{doctor.speciality}}</h3>
+                <h3 class="capitalize">Experience : {{doctor.yearsOfExperience}} year</h3>
                 <div class=" m-2 flex justify-content-center">
                   <p-rating [(ngModel)]="value" [cancel]="false"></p-rating>
                 </div>
               </div>
             </div>
             <div class="col-12 info">
-              <h1>About The Doctor</h1>
-              <p>*MD in Oncology and Hematology National Cancer Institute, Cairo University * Member of the American and European Society of Medical Oncology. * Consultant oncology, Tanta Cancer Center.</p>
+              <h3 class="cNVbvo">About The Doctor</h3>
+              <p class="capitalize"> {{doctor.speciality}} National Cancer Institute, Cairo University 
+                 Member of the American and European Society of Medical Oncology. Consultant {{doctor.speciality}}, Tanta Cancer Center.</p>
             </div>
         </div>
 
@@ -26,21 +27,22 @@
             <div id="bookingInfo">
               Booking Information
             </div>
-            <p-divider align="left"></p-divider>
+            <p-divider align="center">
+              <div class="inline-flex align-items-center">
+                <b>Book</b>
+            </div>
+            </p-divider>
             <div class="centerInfo">
-              <p>BooK</p>
               <p>Examination</p>
             </div>
             <p-divider >
             </p-divider>
             <div align="center">
-              <i class="pi pi-dollar mr-2" >Fees</i>
-              <p>
-              {{doctor.price}}
-              </p>
+              <i class="pi pi-dollar mr-2" >Fees: {{doctor.price}} EGP
+              </i>
             </div>
             <p-divider></p-divider>
-            <div>
+            <div align="center">
               <i class="pi pi-building mr-2">Location:
                 {{doctor.address.city}}
               </i>
@@ -48,29 +50,28 @@
             </div>
             <p-divider></p-divider>
             <div align="center">
-              <h1>Choose your appointment</h1>
+              <h2 class="capitalize" >Choose your appointment</h2>
               <div class="row">
-  
-  
+
                 <div class="col">
-                  <label for="">Today</label>
+                  <label class="lable ">Today</label>
                     <p-listbox [options]="schedule" (onClick)="today = true; tomorrow= false"[(ngModel)]="TodaySelect" [listStyle]="{ 'max-height': '200px' }" optionLabel="name" ></p-listbox>
                 </div>
                 <div class="col">
-                  <label for="">Tomorrow</label>
+                  <label class="lable">Tomorrow</label>
                     <p-listbox [options]="TMRSchedule" (onClick)="today = false ;tomorrow= true" [(ngModel)]="TMRSelect" [listStyle]="{ 'max-height': '200px' }" optionLabel="name" ></p-listbox>
                 </div>
-           <p-divider></p-divider>
+                <p-divider></p-divider>
                 <div>
-                  <button *ngIf="today && schedule[0].name!='Not Avalible'"  (click)="bookToDay()">Book Today At {{TodaySelect.code}}</button>
-                  <button *ngIf="tomorrow && TMRSchedule[0].name!='Not Avalible'" (click)="bookToTMR()">Book Tomorrow At {{TMRSelect.code}}</button>
-        
+                  <p-button class="btnC" *ngIf="today && schedule[0].name!='Not Avalible'"  (click)="bookToDay()">Book Today At {{TodaySelect.code}}</p-button>
+                  <p-button class="btnC" *ngIf="tomorrow && TMRSchedule[0].name!='Not Avalible'" (click)="bookToTMR()">Book Tomorrow At {{TMRSelect.code}}</p-button>
+
                  </div>
               </div>
                           
            </div>
            <p-divider></p-divider>
-           <div>
+           <div align="center">
               <p>Appointment reservation</p>
            </div>
            <p-divider></p-divider>
@@ -85,5 +86,7 @@
     </div>
   </div>
   
-  
+
+
+
   

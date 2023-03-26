@@ -5,6 +5,9 @@ import { CalenderService } from 'src/app/services/calender.service';
 import { DoctorService } from 'src/app/services/doctor.service';
 import * as moment from 'moment';
 import { AppointmentService } from 'src/app/services/appointment.service';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { PopupComponent } from '../components/popup/popup.component';
+
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
@@ -12,9 +15,10 @@ import { AppointmentService } from 'src/app/services/appointment.service';
 })
 
 export class AppointmentComponent  implements OnInit  , AfterViewInit{
+  modalRef: MdbModalRef<PopupComponent> | null = null;
+
   schedule =new Array<Schedule>({name:"Show" , code:""} );
   TMRSchedule =new Array<Schedule>({name:"Show" , code:""} );
-
   doctorID:Number = 1
   value:Number = 4;
   today:boolean = false;
@@ -26,7 +30,9 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
   constructor(
     private doctorService:DoctorService,
     private calenderService:CalenderService,
-    private appointmentService:AppointmentService
+    private appointmentService:AppointmentService,
+    public modalService:MdbModalService,
+
   ){}
 
   ngOnInit(): void {
@@ -75,9 +81,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
     console.log("cc")
   }
  
-  
-
-  bookToDay(){
+  excBookToday(){
     let todayDate = new Date();
     let dayFormat =  moment(todayDate).format("yyyy-MM-DD");
     let data =  {
@@ -86,14 +90,28 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
       startAt:this.TodaySelect.code
     }
 
-    console.log(this.TodaySelect)
     this.appointmentService.post(1,data).subscribe(res=>{
       console.log(res)
     })
   }
 
+  bookToDay(){
+   let messege =`Are You wont to book Today Appointment At ${this.TodaySelect.code} `
+    this.modalRef = this.modalService.open(PopupComponent, {
+      modalClass: 'modal-dialog-centered',
+      data:{messege}
+    });
+    this.modalRef.onClose.subscribe((messege?)=>{
+      if(messege){
+        this.excBookToday()
+      }
+    })
+    
+  }
 
-  bookToTMR(){
+
+
+  excBookTMR(){
     let todayDate = new Date();
     todayDate.setDate(todayDate.getDate() + 1)
     let dayFormat =  moment(todayDate).format("yyyy-MM-DD");
@@ -106,6 +124,18 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
 
     this.appointmentService.post(1,data).subscribe(res=>{
       console.log(res)
+    })
+  }
+  bookToTMR(){
+    let messege =`Are You wont to book Tomoorrow Appointment At ${this.TMRSelect.code} `
+    this.modalRef = this.modalService.open(PopupComponent, {
+      modalClass: 'modal-dialog-centered',
+      data:{messege}
+    });
+    this.modalRef.onClose.subscribe((messege?)=>{
+      if(messege){
+        this.excBookToday()
+      }
     })
   }
 }

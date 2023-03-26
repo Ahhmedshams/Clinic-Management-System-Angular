@@ -1,7 +1,6 @@
 .body{
     background-color: rgb(226 230 234);
-    /* height: 100%;
-    width: 100%; */
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
     
 }
 .info{
@@ -30,4 +29,14 @@ img{
 .cNVbvo {
     margin-top: 5px;
     font-weight: 700;
+}
+.lable{
+    margin: 5px;
+    font-weight: 900;
+}
+.btnC{
+    background-color: #3b71ca !important;
+}
+h3{
+    margin: 0px;
 }

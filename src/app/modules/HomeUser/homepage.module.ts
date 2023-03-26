@@ -30,6 +30,9 @@ import { AppointmentComponent } from './appointment/appointment.component';
 import { DividerModule } from 'primeng/divider';
 import { RatingModule } from 'primeng/rating';
 import { ListboxModule } from 'primeng/listbox';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { PopupComponent } from './components/popup/popup.component';
 @NgModule({
   declarations: [
    HomepageComponent,
@@ -46,6 +49,7 @@ import { ListboxModule } from 'primeng/listbox';
     AddediteformComponent,
     ShowinfoComponent,
     AppointmentComponent,
+    PopupComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +68,9 @@ import { ListboxModule } from 'primeng/listbox';
     MatBadgeModule,
     DividerModule,
     RatingModule,
-    ListboxModule
+    ListboxModule,
+    ButtonModule,
+    CardModule
    
 
     
