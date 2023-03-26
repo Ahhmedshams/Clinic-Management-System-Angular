@@ -29,9 +29,9 @@ export class DoctorService {
     return this.http.patch(this.baseUrl + id + '/status', status);
   }
   getDocCalender(id: Number) {
-    return this.http.get<Calendar[]>(this.baseUrl + id + '/calender');
+    return this.http.get<any>(this.baseUrl + id + '/calender');
   }
   getDocAppt(id: Number) {
-    return this.http.get<Appointment[]>(this.baseUrl + id + '/appointment');
+    return this.http.get<any>(`http://localhost:8080/doctors/${id}/appointment`);
   }
 }
