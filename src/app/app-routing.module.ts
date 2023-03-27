@@ -5,8 +5,6 @@ import { AboutComponent } from './modules/HomeUser/components/home/about/about.c
 import { ServicesComponent } from './modules/HomeUser/components/home/servicesHome/services.component';
 import { HomepageComponent } from './modules/HomeUser/homepage.component';
 
-
-
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   {
@@ -21,19 +19,24 @@ const routes: Routes = [
     loadChildren: () =>
       import('./profiles/profiles.module').then((p) => p.ProfilesModule),
   },
-];
 
   {
     path: '',
-  // component:HomepageComponent
+    // component:HomepageComponent
     loadChildren: () =>
-      import('./modules/HomeUser/homepage.module').then((m) => m.HomepageModule),
-      
-  
-},
-{ path: '', component: HomeComponent , pathMatch:'full' },
-  {path:'dashbord',loadChildren:()=>import("./module/dashboard/dashboard.module").then(m=>m.DashboardModule)},
-]
+      import('./modules/HomeUser/homepage.module').then(
+        (m) => m.HomepageModule
+      ),
+  },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  {
+    path: 'dashbord',
+    loadChildren: () =>
+      import('./module/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
