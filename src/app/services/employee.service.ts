@@ -12,18 +12,17 @@ export class EmployeeService {
   getAll() {
     return this.http.get<Employee[]>(this.baseUrl);
   }
+  getPending() {
+    return this.http.get<Employee[]>(
+      'http://localhost:8080/employee?status=pending'
+    );
+  }
+  getBlocked() {
+    return this.http.get<Employee[]>(
+      'http://localhost:8080/employee?status=blocked'
+    );
+  }
   getById(id: Number) {
     return this.http.get<Employee>(this.baseUrl + id);
-  }
-  deleteById(id: Number) {
-    return this.http.delete(this.baseUrl + id);
-  }
-
-  edit(emp: Employee, id: Number) {
-    return this.http.patch(this.baseUrl + id, emp);
-  }
-
-  updateStatus(id: Number, status: any) {
-    return this.http.patch(this.baseUrl + id + '/status', status);
   }
 }

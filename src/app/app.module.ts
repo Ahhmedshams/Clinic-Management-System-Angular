@@ -10,20 +10,9 @@ import { HeaderComponent } from './core/header/header.component';
 import { DashboardModule } from './module/dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProfilesModule } from './profiles/profiles.module';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FooterComponent,
-    HeaderComponent,
-    UpdateDialogComponent,
-  ],
+  declarations: [AppComponent, FooterComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,12 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     DashboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ProfilesModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatDialogModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

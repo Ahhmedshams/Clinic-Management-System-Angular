@@ -17,6 +17,18 @@ export class PatientService {
   getAll() {
     return this.http.get<Patient[]>(this.baseUrl);
   }
+
+  getActive() {
+    return this.http.get<Patient[]>(
+      'http://localhost:8080/patient?status=active'
+    );
+  }
+  getBlocked() {
+    return this.http.get<Patient[]>(
+      'http://localhost:8080/patient?status=blocked'
+    );
+  }
+
   getById(id: Number) {
     return this.http.get<Patient>(this.baseUrl + id);
   }
@@ -24,8 +36,8 @@ export class PatientService {
     return this.http.delete(this.baseUrl + id);
   }
 
-  edit(patient: Patient, id: Number) {
-    return this.http.patch(this.baseUrl + id, patient);
+  edit(patient: Patient) {
+    return this.http.patch(this.baseUrl + patient._id, patient);
   }
 
   updateStatus(id: Number, status: any) {
@@ -33,11 +45,20 @@ export class PatientService {
   }
 
   getPatientAppt(id: Number) {
-    return this.http.get<any>(
-      `http://localhost:8080/patient/${id}/appointment`
-    );
+    return this.http.get<Appointment[]>(this.baseUrl + id + '/appointment');
   }
-  getPatientInovice(id: Number) {
-    return this.http.get<any>(`http://localhost:8080/patient/${id}/invoice`);
+
+  addPatient(formData: any) {
+    let Patient = {
+      name: formData.fname + ' ' + formData.lname,
+      gender: formData.gender,
+      age: formData.age,
+      email: formData.email,
+      phone: formData.phone,
+      address: formData.address,
+      password: formData.password,
+    };
+    console.log(Patient);
+    return this.http.post(this.baseUrl, Patient);
   }
 }

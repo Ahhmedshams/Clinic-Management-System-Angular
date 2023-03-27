@@ -21,4 +21,10 @@ export class AppointmentService {
   edit(id: Number, data: any) {
     return this.http.patch(this.baseUrl + id, data);
   }
+
+  post(patientID:Number,data:any){
+    return this.http.post(`http://localhost:8080/patient/${patientID}/appointment`,data)
+  }
+
+
 }
