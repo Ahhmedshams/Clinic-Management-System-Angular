@@ -10,19 +10,29 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.2.0",
+    "@angular/animations": "^15.2.3",
+    "@angular/cdk": "^15.2.3",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
     "@angular/core": "^15.2.0",
     "@angular/forms": "^15.2.0",
+    "@angular/material": "^15.2.3",
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
+    "@ngtools/webpack": "^15.2.4",
     "@popperjs/core": "^2.11.6",
     "awesome": "^0.0.7",
     "bootstrap": "^5.2.3",
     "font": "^0.0.4",
+    "mdb-angular-ui-kit": "^4.0.0",
+    "mdb-ui-kit": "^6.2.0",
+    "moment": "^2.29.4",
+    "ng-angular-popup": "^0.2.0",
+    "ng-confirm-box": "^0.0.6",
+    "primeicons": "^6.0.1",
+    "primeng": "^15.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -39,6 +49,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.4",
+    "webpack-cli": "^5.0.1"
   }
 }
