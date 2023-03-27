@@ -9,7 +9,7 @@ export class MedicineService {
 
   baseUrl = 'http://localhost:8080/medicines/'
   constructor(public http:HttpClient) {}
-
+  
   getAll(){
     return this.http.get<Medicine[]>(this.baseUrl)
   }
