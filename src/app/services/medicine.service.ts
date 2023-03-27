@@ -15,7 +15,6 @@ export class MedicineService {
   }
   add(medicine:Medicine){
     return this.http.post<Medicine>(this.baseUrl,medicine);
-     // this.department.push(new Department(dep._id,dep.name,dep.location))
    }
   getById(id:Number){
     return this.http.get<Medicine>(this.baseUrl+id)
