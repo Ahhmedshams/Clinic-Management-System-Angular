@@ -40,9 +40,6 @@ import { BlockedComponent } from './blocked/blocked.component';
 import { BlockedEmpComponent } from './dashComponents/blocked-emp/blocked-emp.component';
 import { BlockedPatientComponent } from './dashComponents/blocked-patient/blocked-patient.component';
 import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.component'
-import { AppointmentComponent } from './appointment/appointment.component';
-import { MedicineComponent } from './medicine/medicine.component';
-
 
 @NgModule({
   declarations: [
@@ -69,8 +66,16 @@ import { MedicineComponent } from './medicine/medicine.component';
     BlockedEmpComponent,
     BlockedPatientComponent,
     BlockedDocComponent,
-    AppointmentComponent,
-    MedicineComponent
+    // AppointmentComponent,
+    // AppointmentDetailsComponent,
+    // AppointmentAddComponent,
+    // AppointmentTableComponent,
+    // AppointmentEditComponent,
+    // MedicineComponent,
+    // MedicineDetailsComponent,
+    // MedicineAddComponent,
+    // MedicineEditComponent,
+    // MedicineListComponent
     ],
   imports: [
     CommonModule,
@@ -87,11 +92,11 @@ import { MedicineComponent } from './medicine/medicine.component';
     NgConfirmModule,
     MatTabsModule,
     MatDialogModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatIconModule
-    
+
   ]
   ,
   providers: [MdbModalService]

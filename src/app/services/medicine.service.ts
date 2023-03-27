@@ -9,22 +9,24 @@ export class MedicineService {
 
   baseUrl = 'http://localhost:8080/medicines/'
   constructor(public http:HttpClient) {}
-
+  
   getAll(){
     return this.http.get<Medicine[]>(this.baseUrl)
   }
-  getArchive(){
-    return this.http.get<Medicine[]>(this.baseUrl+"archive")
-  }
+  add(medicine:Medicine){
+    return this.http.post<Medicine>(this.baseUrl,medicine);
+     // this.department.push(new Department(dep._id,dep.name,dep.location))
+   }
   getById(id:Number){
     return this.http.get<Medicine>(this.baseUrl+id)
   }
   deleteById(id:Number){
+    console.log(id+"delete")
     return this.http.delete(this.baseUrl+id)
   }
 
-  edit(patient:Medicine){
-   return this.http.patch(this.baseUrl+patient._id,patient)
+  edit(medicine:any){
+   return this.http.patch(this.baseUrl+medicine._id,medicine)
  }
 
 
