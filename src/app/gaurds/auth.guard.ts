@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Component, OnInit, Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { UpdateDialogComponent } from '../update-dialog/update-dialog.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, public dialog: MatDialog) { }
 
   canActivate(
     route: ActivatedRouteSnapshot
@@ -27,7 +29,12 @@ export class AuthGuard implements CanActivate {
         }
         else {
           this.router.navigate(['']);
-          alert("you dont have access");
+          // alert("ssssssss")
+          this.dialog.open(UpdateDialogComponent, {
+            data: {
+              message: `You Don't Have Access!`,
+            },
+          });
           return false;
         }
       } else {

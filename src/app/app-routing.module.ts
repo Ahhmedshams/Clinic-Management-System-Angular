@@ -23,12 +23,12 @@ const routes: Routes = [
       import('./module/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-  },
+      canActivate:[AuthGuard] },
   {
     path: 'profile',
     loadChildren: () =>
-      import('./profiles/profiles.module').then((p) => p.ProfilesModule),
-  },
+      import('./profiles/profiles.module').then((p) => p.ProfilesModule ),
+  canActivate:[AuthGuard] },
   { path: "register", component:AllRegisterComponent},
   { path: "login", component: LoginComponent},
 ];
