@@ -4,6 +4,10 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './modules/HomeUser/components/home/about/about.component';
 import { ServicesComponent } from './modules/HomeUser/components/home/servicesHome/services.component';
 import { HomepageComponent } from './modules/HomeUser/homepage.component';
+import { AuthGuard } from './gaurds/auth.guard';
+import { LoginComponent } from './login/login.component';
+import { AllRegisterComponent } from './all-register/all-register.component';
+
 
 const routes: Routes = [
   {
@@ -25,7 +29,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./profiles/profiles.module').then((p) => p.ProfilesModule),
   },
- 
+  { path: "register", component:AllRegisterComponent},
+  { path: "login", component: LoginComponent},
 ];
 
 @NgModule({

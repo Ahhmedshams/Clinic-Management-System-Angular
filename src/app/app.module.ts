@@ -19,9 +19,21 @@ import { ListboxModule } from 'primeng/listbox';
 import { TimeFormatPipe } from './pipes/time-format.pipe';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ButtonModule } from 'primeng/button';
+import { LoginComponent } from './login/login.component';
+import { RegisterationModule } from './registeration/registeration.module';
+import {  ReactiveFormsModule } from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,8 +47,13 @@ import { ButtonModule } from 'primeng/button';
     RatingModule,
     FormsModule ,
     ListboxModule,
-    ButtonModule
-
+    ButtonModule,
+    RegisterationModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent],
