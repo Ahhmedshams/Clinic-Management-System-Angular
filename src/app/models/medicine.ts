@@ -9,5 +9,6 @@ export class Medicine {
         public quantity:number,
         public exp_date:String,
         public mfd_date?:String,
+        public archive?:boolean,
     ){}
 }

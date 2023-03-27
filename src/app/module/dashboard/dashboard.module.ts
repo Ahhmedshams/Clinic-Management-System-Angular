@@ -19,9 +19,6 @@ import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HomeComponent } from './main/home/home.component';
-import { AppointmentComponent } from './appointment/appointment.component';
-import { MedicineComponent } from './medicine/medicine.component';
-
 
 @NgModule({
   declarations: [
@@ -32,8 +29,16 @@ import { MedicineComponent } from './medicine/medicine.component';
     ReportComponent,
     PendingComponent,
     HomeComponent,
-    AppointmentComponent,
-    MedicineComponent
+    // AppointmentComponent,
+    // AppointmentDetailsComponent,
+    // AppointmentAddComponent,
+    // AppointmentTableComponent,
+    // AppointmentEditComponent,
+    // MedicineComponent,
+    // MedicineDetailsComponent,
+    // MedicineAddComponent,
+    // MedicineEditComponent,
+    // MedicineListComponent
   ],
   imports: [
     CommonModule,

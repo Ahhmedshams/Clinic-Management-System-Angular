@@ -6,6 +6,8 @@ export class Appointment {
         public time:String,
         public patientId:any,
         public isScaned:String,
-        public calenderId?:Number
+        public archive?:boolean,
+        public calenderId?:Number,
+        public clinicId?:Number
     ){}
 }
