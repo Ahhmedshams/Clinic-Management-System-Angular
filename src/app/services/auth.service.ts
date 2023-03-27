@@ -76,6 +76,7 @@ export class AuthService {
 
   login(userData:any)
   {
+    console.log(userData);
     //  const headers = new HttpHeaders({'Authorization': `'Bearer' ${}`});
     return this.http.post(`${this.baseUrl}/login`,userData);
   }

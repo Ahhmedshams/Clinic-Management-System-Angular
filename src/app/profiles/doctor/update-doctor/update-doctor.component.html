@@ -1,6 +1,6 @@
 <body>
   <div class="container">
-    <form [formGroup]="doctorUpdateForm" class="row" (ngSubmit)="edit()">
+    <form [formGroup]="doctorUpdateForm" class="row">
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input
@@ -165,8 +165,8 @@
         </button>
         <button
           class="btn btn-primary ms-3"
-          type="submit"
           [disabled]="!doctorUpdateForm.valid"
+          (click)="edit()"
         >
           Update
         </button>
