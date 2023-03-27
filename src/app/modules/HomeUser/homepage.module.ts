@@ -26,6 +26,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ShowinfoComponent } from './components/prescription/showinfo/showinfo.component';
 import { HeroComponent } from './components/home/hero/hero.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { findDoctorsComponent } from './components/findDoctors/findDoctors.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {MatBadgeModule} from '@angular/material/badge';
      MedicensearchComponent,
     AddediteformComponent,
     ShowinfoComponent,
+    findDoctorsComponent
   ],
   imports: [
     CommonModule,

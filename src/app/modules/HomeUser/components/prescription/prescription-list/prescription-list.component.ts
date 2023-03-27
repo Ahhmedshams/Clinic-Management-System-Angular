@@ -8,33 +8,20 @@ import * as moment from 'moment';
 import {MatDialog} from '@angular/material/dialog';
 import { AddediteformComponent } from '../addediteform/addediteform.component';
 import { ShowinfoComponent } from '../showinfo/showinfo.component';
-
 @Component({
   selector: 'app-prescription-list',
   templateUrl: './prescription-list.component.html',
   styleUrls: ['./prescription-list.component.css']
 })
- 
 export class PrescriptionListComponent {
  public date:any= moment().format('YYYY-MM-DD');///2020-02-12
- public data: Prescription= new Prescription(2,this.date,1,3,[1,3],"mn") ; 
+ public data: any 
  public patient:Patient[]=[] ;
  public prescription:any;
-  constructor(public prescriServes :PrescriptionService,public patientServes :PatientService,public   dialog:MatDialog)
-  {
-    
-  }
-
- 
-  
- 
+  constructor(public prescriServes :PrescriptionService,public patientServes :PatientService,public  dialog:MatDialog){}
  ngOnInit()
  {
-  this.prescriServes.getAll().subscribe(data=>{
-    this.prescription=data;
-  })
-
-  // this.patientServes
+ this.prescriServes.getAll().subscribe(data=>{this.prescription=data.filter((ele:any)=>ele.doctorId?._id==1)})
   this.patientServes.getAll().subscribe(data=>{
     this.patient=data; 
   })

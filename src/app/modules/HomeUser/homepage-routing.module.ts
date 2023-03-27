@@ -6,6 +6,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PrescriptionListComponent } from './components/prescription/prescription-list/prescription-list.component';
 import { ServicesComponent } from './components/home/servicesHome/services.component';
 import { HomepageComponent } from './homepage.component';
+// import { DoctorsComponent } from './components/findDoctors/doctors.component';
+import {  findDoctorsComponent } from './components/findDoctors/findDoctors.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,7 @@ const routes: Routes = [
   {path:"Home",component:HomeComponent},
   {path:"about",component:AboutComponent},
   {path:"services",component:ServicesComponent},
-  {path:"price",component:PrescriptionListComponent},
+  {path:"Home/doctors",component:findDoctorsComponent},
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
   {path:"**",component:NotFoundComponent},
     ],
