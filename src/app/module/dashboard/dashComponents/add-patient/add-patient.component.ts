@@ -88,7 +88,7 @@ update(){
  
   }
  
-  this.patientService.edit(Patient).subscribe(()=>{
+  this.patientService.editWithoutId(Patient).subscribe(()=>{
     console.log("done")
     this._location.back();
 

@@ -36,8 +36,11 @@ export class PatientService {
     return this.http.delete(this.baseUrl + id);
   }
 
-  edit(patient: Patient) {
+  editWithoutId(patient: Patient) {
     return this.http.patch(this.baseUrl + patient._id, patient);
+  }
+  edit(patient: Patient,id:Number) {
+    return this.http.patch(this.baseUrl + id, patient);
   }
 
   updateStatus(id: Number, status: any) {
@@ -45,7 +48,7 @@ export class PatientService {
   }
 
   getPatientAppt(id: Number) {
-    return this.http.get<Appointment[]>(this.baseUrl + id + '/appointment');
+    return this.http.get<any>(this.baseUrl + id + '/appointment');
   }
 
   addPatient(formData: any) {
@@ -61,4 +64,10 @@ export class PatientService {
     console.log(Patient);
     return this.http.post(this.baseUrl, Patient);
   }
+
+getPatientInovice(id: Number) {
+    return this.http.get<any>(`http://localhost:8080/patient/${id}/invoice`);
+  }
+
+
 }

@@ -11,6 +11,15 @@ import { DashboardModule } from './module/dashboard/dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { DividerModule } from 'primeng/divider';
+import { HomeComponent } from './components/home/home.component';
+import { RatingModule } from 'primeng/rating';
+import { ListboxModule } from 'primeng/listbox';
+import { TimeFormatPipe } from './pipes/time-format.pipe';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ButtonModule } from 'primeng/button';
+
 @NgModule({
   declarations: [AppComponent, FooterComponent, HeaderComponent],
   imports: [
@@ -22,6 +31,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     
+    DividerModule,
+    RatingModule,
+    FormsModule ,
+    ListboxModule,
+    ButtonModule
 
   ],
   providers: [],

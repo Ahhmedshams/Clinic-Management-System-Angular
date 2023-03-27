@@ -110,7 +110,7 @@ export class AddDocComponent implements OnInit {
     
      }
     
-     this.doctorService.edit(doctor).subscribe(()=>{
+     this.doctorService.edit(doctor , doctor._id).subscribe(()=>{
        console.log("done")
        this._location.back();
    
