@@ -20,7 +20,7 @@ const routes: Routes = [
       {path:"about",component:AboutComponent},
       {path:"services",component:ServicesComponent},
       {path:"price",component:PrescriptionListComponent},
-      {path:"appointment",component:AppointmentComponent},
+      {path:"appointment/:id",component:AppointmentComponent},
       {path:"Home/doctors",component:findDoctorsComponent},
       { path: '', redirectTo: 'Home', pathMatch: 'full' },
     ],

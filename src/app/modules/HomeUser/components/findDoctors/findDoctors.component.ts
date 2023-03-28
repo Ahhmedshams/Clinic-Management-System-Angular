@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Doctor } from 'src/app/models/doctor';
 import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
@@ -9,21 +11,27 @@ import { DoctorService } from 'src/app/services/doctor.service';
 
 
 export class findDoctorsComponent {
-public doctors :any
+public doctors! :Doctor[];
+public doctorsMain! :Doctor[];
+
 public allSpeciality :any
 
-constructor(public doctorService:DoctorService){}
+constructor(public doctorService:DoctorService,
+              private router:Router
+  ){}
   ngOnInit(){
     this.doctorService.getAll().subscribe(data=>{
- this.allSpeciality= [...new Set(data.map(ele=> ele.speciality ))]
+    this.allSpeciality= [...new Set(data.map(ele=> ele.speciality ))]
         
       
       this.doctors=data;
+      this.doctorsMain=data;
     })
   }
 
   changeSearch(e:any){
-    if(e.target.value){this.doctorService.getAll().subscribe(data=>{this.doctors= data.filter(ele=>
+    if(e.target.value){this.doctorService.getAll().subscribe(data=>{
+      this.doctors= data.filter(ele=>
       data[ele.name.search(e.target.value[0]?.toUpperCase()+e.target.value.slice(1,)) ]
     
       
@@ -32,8 +40,11 @@ constructor(public doctorService:DoctorService){}
   }
 
 
-
+  book(id:Number){
+    this.router.navigate(['appointment',id])
+  }
 
   filterBySpeciality(speciality:any){
-    this.doctorService.getAll().subscribe(data=>{   this.doctors=data.filter(ele=>ele.speciality==speciality)}) }
+    this.doctors=this.doctorsMain.filter(doc=>doc?.speciality==speciality)
+}
 }
