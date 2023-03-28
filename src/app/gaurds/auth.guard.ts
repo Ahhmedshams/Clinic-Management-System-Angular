@@ -29,7 +29,6 @@ export class AuthGuard implements CanActivate {
         }
         else {
           this.router.navigate(['']);
-          // alert("ssssssss")
           this.dialog.open(UpdateDialogComponent, {
             data: {
               message: `You Don't Have Access!`,

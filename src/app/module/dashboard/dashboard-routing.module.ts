@@ -22,13 +22,12 @@ const routes : Routes = [
     { path: 'add-employee', component: AddEmpComponent },
     { path: 'edit-doctor/:id', component: AddDocComponent },
     { path: 'edit-patient/:id', component: AddPatientComponent },
-    { path: 'edit-employee/:id', component: AddEmpComponent },
-
-    { path: 'main', component: MainComponent },
+    { path: 'edit-employee/:id', component: AddEmpComponent },    
     { path: 'report', component: ReportComponent },
-    {path:'medicines',loadChildren:()=>import('./medicine/medicine.module').then(m=>m.MedicineModule)},
+    { path:'medicines',loadChildren:()=>import('./medicine/medicine.module').then(m=>m.MedicineModule)},
     { path: 'appointments', loadChildren:()=>import('./appointment/appointment.module').then(m=>m.AppointmentModule)} ,
     { path: 'invoices', loadChildren:()=>import('./invoice/invoice.module').then(m=>m.InvoiceModule)} ,
+    { path: '', redirectTo :'main', pathMatch:"full" },
 
   ]},
 ]
