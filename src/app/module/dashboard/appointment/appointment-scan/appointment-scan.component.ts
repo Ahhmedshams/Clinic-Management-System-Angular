@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Appointment } from 'src/app/models/appointment';
 import { Clinic } from 'src/app/models/clinic';
+import * as moment from 'moment';
+
 import { Doctor } from 'src/app/models/doctor';
 import { Patient } from 'src/app/models/patient';
 import { AppointmentService } from 'src/app/services/appointment.service';
@@ -35,18 +37,20 @@ export class AppointmentScanComponent {
 
    }
   ngOnInit(){
-    let m=new Date().getMonth();
-    let d=new Date().getDate();
-    let y=new Date().getFullYear();
-    if(m<10){
-      if(d<10){
-        this.date=y+"-0"+(m+1) +"-0"+  d;
-      }
-      else{
+    // let m=new Date().getMonth();
+    // let d=new Date().getDate();
+    // let y=new Date().getFullYear();
+    // if(m<10){
+    //   if(d<10){
+    //     this.date=y+"-0"+(m+1) +"-0"+  d;
+    //   }
+    //   else{
 
-        this.date=y+"-0"+(m+1) +"-"+  d;
-      }
-    }
+    //     this.date=y+"-0"+(m+1) +"-"+  d;
+    //   }
+    // }
+
+    this.date =  moment(new Date()).format("yyyy-MM-DD");
     // console.log(this.date);
 
     this.clinicService.getAll().subscribe(data=>{

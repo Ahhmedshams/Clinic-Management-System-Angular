@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { PopupComponent } from '../components/popup/popup.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-appointment',
@@ -19,7 +20,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
 
   schedule =new Array<Schedule>({name:"Show" , code:"Not Avalible"} );
   TMRSchedule =new Array<Schedule>({name:"Show" , code:"Not Avalible"} );
-  doctorID:Number = 1
+  doctorID!:Number 
   value:Number = 4;
   today:boolean = false;
   tomorrow:boolean= false;
@@ -32,17 +33,17 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
     private calenderService:CalenderService,
     private appointmentService:AppointmentService,
     public modalService:MdbModalService,
-
+    private activatedRoute:ActivatedRoute
   ){}
 
   ngOnInit(): void {
-    
-    this.doctorService.getById(this.doctorID).subscribe((data)=>{
-      this.doctor = data;
-    })
-    this.initTodayCal()
-    this.initTMRCal()
-    
+    this.activatedRoute.params.subscribe(val=>{
+      this.doctorID=val["id"]
+      this.doctorService.getById(this.doctorID).subscribe((data)=>{this.doctor = data;})
+      this.initTodayCal()
+      this.initTMRCal()
+    }
+)
 
   }
 
