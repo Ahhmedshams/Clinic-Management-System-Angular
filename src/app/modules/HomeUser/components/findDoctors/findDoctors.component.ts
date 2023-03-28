@@ -23,8 +23,11 @@ constructor(public doctorService:DoctorService){}
   }
 
   changeSearch(e:any){
-    if(e.target.value){this.doctorService.getAll().subscribe(data=>{this.doctors= data.filter(ele=>
-      data[ele.name.search(e.target.value[0]?.toUpperCase()+e.target.value.slice(1,)) ]
+    // new RegExp(this.searchTerm, 'i');
+    
+    if(e.target.value){this.doctorService.getAll().subscribe(data=>{this.doctors= data.filter((ele:any)=>{
+     return new RegExp(e.target.value, 'i').test(ele.name)}
+
     
       
       )})} 

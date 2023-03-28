@@ -1,3 +1,4 @@
+
 <form #addPresc="ngForm" class="addForm" (ngSubmit)="addPrescForm(addPresc)">
      <input type="date" name="date" ngModel [(ngModel)]="data.date" style="padding: 10px;">
 <label class="select" for="slct">
@@ -20,9 +21,9 @@
 <mat-form-field appearance="fill">
     <mat-label>Toppings</mat-label>
     <!-- <mat-select [formControl]="toppings" multiple  > -->
-    <mat-select required multiple ngModel name="medicine"[(ngModel)]="data.medicine" >
+    <mat-select required multiple  name="medicine"[(ngModel)]="data.medicine" (ngModelChange)="data.medicine" >
       <!-- <mat-option *ngFor="let topping of toppingList"  [value]="topping">{{topping}}</mat-option> -->
-      <mat-option *ngFor="let medicine of medicineList"   value={{+medicine._id}} >{{medicine.drugName}}</mat-option>
+      <mat-option *ngFor="let medicine of medicineList"  value={{medicine._id}} >{{medicine.drugName}}</mat-option>
     </mat-select>
   </mat-form-field>
    
@@ -30,6 +31,7 @@
   </textarea>
    
 
-<button type="submit" class="btn btn-primary btn-lg" [disabled]="addPresc.invalid" >add</button>
+<button type="submit" class="btn btn-primary btn-lg" [disabled]="addPresc.invalid" >{{btnName}}</button>
 <!-- <button type="submit" class="btn btn-primary btn-lg"  >Register</button> -->
 </form>
+ 

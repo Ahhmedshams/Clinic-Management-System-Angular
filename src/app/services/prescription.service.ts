@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Prescription } from '../models/prescription';
 import { HttpClient } from '@angular/common/http';
 import { PrescriptionGet } from '../models/prescriptionGet';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })

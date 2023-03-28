@@ -10,6 +10,9 @@ import { PatientService } from 'src/app/services/patient.service';
 import { PrescriptionService } from 'src/app/services/prescription.service';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { isString } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { ToastService } from 'angular-toastify';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-addediteform',
   templateUrl: './addediteform.component.html',
@@ -17,7 +20,9 @@ import { isString } from '@ng-bootstrap/ng-bootstrap/util/util';
 })
 export class AddediteformComponent {
   constructor(public prescriServes :PrescriptionService,public patientServes :PatientService,public medicienService:MedicineService,public   dialog:MatDialog,
-    @Inject(MAT_DIALOG_DATA) public myDataForEdite: any
+    @Inject(MAT_DIALOG_DATA) public myDataForEdite: any,
+    public toast:ToastrService
+    // private _toastService: ToastService
    ){}
    
   
@@ -25,49 +30,49 @@ export class AddediteformComponent {
     public patient:Patient[]=[] ;
     public medicineList:any ;
     public prescription:any;
+    public btnName:String=!this.myDataForEdite.date?"Add":"Edite"
    
-    public data: Prescription= new Prescription(2,this.myDataForEdite?.date?.split("T")[0]||this.date,3,1,[1,3],this.myDataForEdite?.description||"please enter description") ;//3799139
+    public data: Prescription= this.myDataForEdite.date ? new Prescription(this.myDataForEdite?._id,this.myDataForEdite?.date?.split("T")[0],1,this.myDataForEdite?.patientId?._id,this.myDataForEdite.medicine,this.myDataForEdite?.description) : new Prescription(2,this.date,1,1,[1,3],"please enter description") ;
+    
+    
+    //3799139
+    // new Prescription(2,this.myDataForEdite?.date?.split("T")[0]||this.date,3,1,[1,3],this.myDataForEdite?.description||"please enter description") ;//3799139
     
      
     
     ngOnInit()
     {
       // console.log(this.myDataForEdite);
+      // this.toast.success('this element was deleted successfuly ');
       
      this.prescriServes.getAll().subscribe(data=>{
-       
        this.prescription=data;
-      //id =3 // service doctors search by name (this.id) 
      })
-   
-     // this.patientServes
      this.patientServes.getAll().subscribe(data=>{
-
-
        this.patient=data; 
      })
-
      this.medicienService.getAll().subscribe(data=>{
-      console.log(data);
-      
       this.medicineList=data; 
     })
 
-    // console.log(this.myDataForEdite.descriotion);
     
     }
    
 
 
     addPrescForm(form:any){
-      console.log(form.value);
-     console.log(this.myDataForEdite);
+      
 
       if(this.myDataForEdite.date){
 
-        this.prescriServes.edit(this.myDataForEdite).subscribe({
+        console.log(this.data);
+        
+        this.prescriServes.edit(this.data).subscribe({
           next:(val)=>{
             console.log("yordatawas ",val,this.data);
+            this.toast.success('this element was edited successfuly '); 
+            this.dialog.closeAll()               
+
           },error:(e)=>{
             console.log(e,this.data); 
           }
@@ -77,10 +82,17 @@ export class AddediteformComponent {
       }
       else{
 
-      
      this.prescriServes.addPresc(this.data).subscribe({
            next:(val)=>{
-             console.log(val);
+
+            this.prescriServes.getAll().subscribe(data=>{
+              this.toast.success('this element was added successfuly ');
+              console.log(data, this.prescription);
+              this.prescription=data;
+              console.log(data, this.prescription);
+            
+            })
+          
            },error:(e)=>{
              console.log(e); 
            }
@@ -107,7 +119,8 @@ export class AddediteformComponent {
        this.prescriServes.deleteById(id)
        .subscribe({
          next:(val)=>{
-           console.log(val);
+          console.log(val);
+          // this.toast.success('this element was deleted successfuly ');
          },error:(e)=>{
            console.log(e); 
          }
@@ -117,14 +130,6 @@ export class AddediteformComponent {
      }
    
  
-    //  toppings = new FormControl('');
-    //  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-     
-     
-    //  openAndEdite(){
-    //   this.dialog.open(AddediteformComponent)
-    //  }
-   
-    
+  
    
 }

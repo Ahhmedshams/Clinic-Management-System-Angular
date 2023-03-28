@@ -27,7 +27,10 @@ import { ShowinfoComponent } from './components/prescription/showinfo/showinfo.c
 import { HeroComponent } from './components/home/hero/hero.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { findDoctorsComponent } from './components/findDoctors/findDoctors.component';
+import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
    HomepageComponent,
@@ -37,18 +40,19 @@ import { findDoctorsComponent } from './components/findDoctors/findDoctors.compo
     AboutComponent,
     ServicesComponent,
     NotFoundComponent,
-    // ApoimentComponent,
     HeroComponent,
     PrescriptionListComponent ,
      MedicensearchComponent,
     AddediteformComponent,
     ShowinfoComponent,
-    findDoctorsComponent
+    findDoctorsComponent,
+
   ],
   imports: [
     CommonModule,
     HomepageRoutingModule,
     FormsModule,
+
     MatIconModule,
     MatChipsModule,
     MatFormFieldModule,
@@ -59,13 +63,15 @@ import { findDoctorsComponent } from './components/findDoctors/findDoctors.compo
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MatBadgeModule
+    MatBadgeModule,
+  
    
 
     
 
   ],
-  providers: [{ provide: MatDialogRef, useValue: {}}, { provide: MAT_DIALOG_DATA, useValue: {} }, ],
+
+  providers: [{ provide: MatDialogRef, useValue: {}}, { provide: MAT_DIALOG_DATA, useValue: {} }],
 
  
 })

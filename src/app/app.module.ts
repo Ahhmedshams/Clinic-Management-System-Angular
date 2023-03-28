@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule}  from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +15,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    BrowserAnimationsModule
+
+    // === for prescription ===
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
+    // ===  end for prescription ===
+
   ],
   bootstrap: [AppComponent]
 })
