@@ -27,6 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { TokenInterceptorService } from './custom/validations/token-interceptor.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './gaurds/auth.guard';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -38,7 +39,7 @@ import { AuthGuard } from './gaurds/auth.guard';
     LoginComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     AppRoutingModule,
     NgbModule,
     RouterModule,
