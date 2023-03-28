@@ -17,10 +17,7 @@ export class GetPatientComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.activatedRouter.params.subscribe((i) => {
-      this.patientService.getById(i['id']).subscribe((data) => {
-        data.status == 'active'
-          ? (this.patientObj = data)
-          : this.router.navigateByUrl('');
+      this.patientService.getById(i['id']).subscribe((data) => {(this.patientObj = data)
       });
     });
   }

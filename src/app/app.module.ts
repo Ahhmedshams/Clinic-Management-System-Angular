@@ -10,6 +10,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { DashboardModule } from './module/dashboard/dashboard.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 
 import { DividerModule } from 'primeng/divider';
@@ -28,7 +29,8 @@ import { TokenInterceptorService } from './custom/validations/token-interceptor.
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './gaurds/auth.guard';
 import { CommonModule } from '@angular/common';
-
+import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    UpdateDialogComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,7 @@ import { CommonModule } from '@angular/common';
     DashboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+    MatButtonModule,
     DividerModule,
     RatingModule,
     FormsModule ,
@@ -57,7 +60,8 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

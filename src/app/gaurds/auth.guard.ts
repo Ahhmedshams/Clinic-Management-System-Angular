@@ -19,12 +19,12 @@ export class AuthGuard implements CanActivate {
         let menu = route.url[0].path;
         if ((menu == 'doctors' || menu == 'patients' || menu == 'employees' || menu == 'dashboard'|| menu == 'medicine') && (this.authService.getRole() == "admin")) {
           return true;
-        } else if ((menu == 'doctor') && (this.authService.getRole() == "doctor")) {
+        } else if ((menu == 'profile') && (this.authService.getRole() == "doctor")) {
           return true;
         }
-        else if ((menu == 'patient') && (this.authService.getRole() == "patient")) {
+        else if ((menu == 'profile') && (this.authService.getRole() == "patient")) {
           return true;
-        } else if ((menu == 'employee') && (this.authService.getRole() == "employee")) {
+        } else if ((menu == 'profile') && (this.authService.getRole() == "employee")) {
           return true;
         }
         else {
