@@ -6,7 +6,7 @@
 <div class="modal-body row">
   <div class="imgClass col-lg mb-2">
 
-    <img src=".././../../../../assets/images/pexels-pixabay-208518.jpg" class="card-img-top" alt="medicine">
+    <img src=".././../../../../assets/images/pexels-pixabay-208518.jpg" class="card-img-top fa-s" alt="medicine">
   </div>
  <div class="col-lg">
 
@@ -28,9 +28,10 @@
                  <li class="list-group-item">Exp_date:  {{exp}}</li>
 
                </ul>
-               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+               <div class="d-grid  d-md-flex justify-content-md-end mt-3">
 
-                 <a routerLink="/medicines"routerLinkActive="active1" class="btn btn-secondary me-md-2 mt-5"> back </a>
+                 <!-- <a routerLink="/medicines"routerLinkActive="active1" class="btn btn-secondary me-md-2 mt-5"> back </a> -->
+                 <button mat-raised-button color="warn"class='me-2' (click)="back()"   class="back"> Back</button>
                </div>
 
          </mat-card-content>

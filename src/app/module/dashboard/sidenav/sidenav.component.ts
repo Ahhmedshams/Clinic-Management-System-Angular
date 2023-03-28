@@ -1,7 +1,9 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
-
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { PopupComponent } from 'src/app/modules/HomeUser/components/popup/popup.component';
+import { Router } from '@angular/router';
 interface SideNavToggle{
   screenWidth:number;
   collapsed:boolean;
@@ -43,7 +45,12 @@ interface SideNavToggle{
 export class SidenavComponent implements OnInit {
   collapsed = false;
   navData =navbarData; 
+  modalRef: MdbModalRef<PopupComponent> | null = null;
 
+  constructor(
+    public modalService:MdbModalService,
+    public router:Router
+  ){}
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   screenWidth= 0;
 
@@ -68,5 +75,22 @@ export class SidenavComponent implements OnInit {
   toggleCollapse():void{
     this.collapsed = !this.collapsed;
     this.onToggleSideNav.emit({collapsed: this.collapsed , screenWidth: this.screenWidth})
+   }
+
+   logOut(){
+    let Type = "Log Out"
+    let messege =`Are you sure you want to log out?`
+    this.modalRef = this.modalService.open(PopupComponent, {
+      modalClass: 'modal-dialog-centered',
+      data:{messege,Type
+      }
+    });
+    this.modalRef.onClose.subscribe((messege?)=>{
+      if(messege){
+        localStorage.clear()
+        this.router.navigateByUrl(`/Home`);
+       
+      }
+    })
    }
 }

@@ -27,7 +27,7 @@ export class UpdateDoctorComponent implements OnInit {
   ) {
     this.doctorUpdateForm = this.fb.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required ,Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/)]],
       password: ['', [Validators.required]],
       phone: [
         '',

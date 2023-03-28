@@ -10,6 +10,7 @@ import { HeaderComponent } from './core/header/header.component';
 import { DashboardModule } from './module/dashboard/dashboard.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 
 import { DividerModule } from 'primeng/divider';
@@ -27,7 +28,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { TokenInterceptorService } from './custom/validations/token-interceptor.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './gaurds/auth.guard';
-
+import { CommonModule } from '@angular/common';
+import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -35,17 +38,18 @@ import { AuthGuard } from './gaurds/auth.guard';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    UpdateDialogComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     AppRoutingModule,
     NgbModule,
     RouterModule,
     DashboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+    MatButtonModule,
     DividerModule,
     RatingModule,
     FormsModule ,
@@ -56,7 +60,8 @@ import { AuthGuard } from './gaurds/auth.guard';
     HttpClientModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

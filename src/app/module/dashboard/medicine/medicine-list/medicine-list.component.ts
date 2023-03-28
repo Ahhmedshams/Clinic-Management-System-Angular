@@ -28,11 +28,7 @@ displayedColumns: string[] = ['id', 'drugName', 'dosage', 'price','quantity','ex
   private confirmService: NgConfirmService,
    public router:Router) {}
  ngOnInit(){
-  //
-
-    this.medicineService.getAll().subscribe(data=>{
-      // data.filter(p =>p.archive==true);
-      // console.log(data.filter(p =>p.archive==true));
+   this.medicineService.getAll().subscribe(data=>{
       this.medicine=data.filter(p =>p.archive==false );
       this.medicineArchive=data.filter(p =>p.archive==true);
       this.dataSource = new MatTableDataSource(this.medicine);
@@ -66,21 +62,17 @@ delete(id:number){
   this.confirmService.showConfirm("Are you sure want to delete this medicine?",
      () => {
       this.medicineService.deleteById(id).subscribe(data=>{console.log(data+"delete")})
+      let stdIndex=this.medicine.findIndex(obj=>obj._id==id);
+      this.medicineArchive.push( this.medicine.splice(stdIndex,1)[0]);
+      this.dataSource = new MatTableDataSource(this.medicine);
+      this.dataSource2 = new MatTableDataSource(this.medicineArchive);
     },
     () => {
       //yor logic if No clicked
     })
-  if(confirm('Are you sure want to delete this medicine?')){
 
-    this.medicineService.deleteById(id).subscribe(()=>{
-
-    let stdIndex=this.medicine.findIndex(obj=>obj._id==id);
-    this.medicineArchive.push( this.medicine.splice(stdIndex,1)[0]);
-    this.dataSource = new MatTableDataSource(this.medicine);
-    this.dataSource2 = new MatTableDataSource(this.medicineArchive);
-  })
     this.router.navigateByUrl('/medicines');
-  }
+  // }
   }
   edit(id:number){
     this.router.navigateByUrl('/medicines/edit/'+id)
