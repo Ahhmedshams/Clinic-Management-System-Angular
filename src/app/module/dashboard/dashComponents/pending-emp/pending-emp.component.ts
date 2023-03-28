@@ -63,6 +63,8 @@ export class PendingEmpComponent {
     this.confirmService.showConfirm("Are you sure want  to block this user?",
      () => {
       this.empService.updateStatus(id,{status:"blocked"}).subscribe(data=>{})
+      this.emps = this.emps.filter(user=>user._id!=id);
+      this.dataSource = new MatTableDataSource(this.emps);
     },
     () => {
       //yor logic if No clicked
@@ -79,15 +81,16 @@ openView(Emp:any){
       
 }
 
-acceptPopup(docId:Number){
+acceptPopup(id:Number){
   this.modalRef = this.modalService.open(AcceptPopupComponent, {
     modalClass: 'modal-dialog-centered'
   });
   this.modalRef.onClose.subscribe((messege?) => {
     if(messege.status){
-      this.empService.accept(docId,{clinicId:messege.id,
+      this.empService.updateStatus(id,{clinicId:messege.id,
         status: "active"}).subscribe(data=>{
-          this.ngOnInit()
+          this.emps = this.emps.filter(user=>user._id!=id);
+        this.dataSource = new MatTableDataSource(this.emps);
           
         })
     }

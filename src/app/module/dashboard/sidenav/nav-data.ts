@@ -2,7 +2,7 @@ export const navbarData = [
    {
     routerLink: 'main',
     icon:'fal fa-home',
-    label:'Dashbord'
+    label:'Dashboard'
    } ,
    {
       routerLink: 'report',

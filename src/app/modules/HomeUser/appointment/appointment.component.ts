@@ -17,8 +17,8 @@ import { PopupComponent } from '../components/popup/popup.component';
 export class AppointmentComponent  implements OnInit  , AfterViewInit{
   modalRef: MdbModalRef<PopupComponent> | null = null;
 
-  schedule =new Array<Schedule>({name:"Show" , code:""} );
-  TMRSchedule =new Array<Schedule>({name:"Show" , code:""} );
+  schedule =new Array<Schedule>({name:"Show" , code:"Not Avalible"} );
+  TMRSchedule =new Array<Schedule>({name:"Show" , code:"Not Avalible"} );
   doctorID:Number = 1
   value:Number = 4;
   today:boolean = false;
@@ -55,7 +55,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
          this.schedule.push({ name: element, code: element })
         }); 
       }else{
-        this.schedule[0].name="Not Avalible"
+        this.schedule[0].name=this.schedule[0].code="Not Avalible"
       }
        
     })
@@ -69,8 +69,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
        this.TMRSchedule.push({ name: element, code: element })
       });
       }else{
-        console.log("empty")
-        this.TMRSchedule[0].name="Not Avalible"
+        this.TMRSchedule[0].name=this.TMRSchedule[0].code="Not Avalible"
       }
          
     })
