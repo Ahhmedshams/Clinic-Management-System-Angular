@@ -11,33 +11,21 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatIconModule} from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
 
-import { FormBuilder,FormsModule,ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MedicineRoutingModule } from './medicine-routing.module';
-import { MedicineComponent } from './medicine-list/medicine-list.component';
-import { MedicineAddComponent } from './medicine-add/medicine-add.component';
-import { MedicineDetailsComponent } from './medicine-details/medicine-details.component';
-import { MedicineEditComponent } from './medicine-edit/medicine-edit.component';
+import {MatSelectModule} from '@angular/material/select';
+import { InvoiceRoutingModule } from './invoice-routing.module';
 
 
 @NgModule({
-  declarations: [
-    MedicineEditComponent,
-    MedicineDetailsComponent,
-    MedicineAddComponent,
-    MedicineComponent
-  ],
+  declarations: [],
   imports: [
-    CommonModule,
-    MedicineRoutingModule,
-    MatTabsModule,NgConfirmModule,
+    CommonModule,MatTabsModule,NgConfirmModule,
     MatInputModule,MatFormFieldModule,
     MatButtonModule,MatCardModule,
     MatSortModule,MatIconModule,MatSelectModule,
     MatTableModule,MatPaginatorModule,
-    FormsModule,RouterModule
-    ,ReactiveFormsModule,
+    RouterModule,
+    InvoiceRoutingModule
   ]
 })
-export class MedicineModule { }
+export class InvoiceModule { }

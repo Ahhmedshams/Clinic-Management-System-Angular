@@ -39,7 +39,7 @@
       <mat-error *ngIf="quantity?.errors?.['required']"> quantity is required </mat-error>
       <mat-error *ngIf="quantity?.errors?.['minLength']"> quantity maxLength is  30 </mat-error>
     </mat-form-field>
-    <!-- <mat-form-field class="col-12 col-md-6"  appearance="fill">
+    <mat-form-field class="col-12 "  appearance="fill">
       <mat-label>form</mat-label>
       <mat-select formControlName="form">
          <mat-option value="cap">cap</mat-option>
@@ -49,12 +49,12 @@
         <mat-option value="Eye_Drops">Eye_Drops</mat-option>
         <mat-option value="tab">tab</mat-option>
       </mat-select>
-    </mat-form-field> -->
-    <mat-form-field class="col-12 ">
+    </mat-form-field>
+    <!-- <mat-form-field class="col-12 ">
       <input formControlName="form" type="text" matInput placeholder="form" required>
       <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
       <mat-error *ngIf="form?.errors?.['required']"> form is required </mat-error>
-  </mat-form-field>
+  </mat-form-field> -->
   <mat-form-field class="col-12 col-md-6">
     <input formControlName="exp_date" type="text" matInput placeholder="expire date " required>
     <mat-icon matSuffix>date_range</mat-icon>

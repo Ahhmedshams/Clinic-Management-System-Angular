@@ -39,7 +39,9 @@ import { AddEmpComponent } from './dashComponents/add-emp/add-emp.component';
 import { BlockedComponent } from './blocked/blocked.component';
 import { BlockedEmpComponent } from './dashComponents/blocked-emp/blocked-emp.component';
 import { BlockedPatientComponent } from './dashComponents/blocked-patient/blocked-patient.component';
-import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.component'
+import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.component';
+import { InvoiceComponent } from './invoice/invoice-table/invoice.component';
+import { InvoiceViewComponent } from './invoice/invoice-view/invoice-view.component'
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { BlockedDocComponent } from './dashComponents/blocked-doc/blocked-doc.co
     BlockedEmpComponent,
     BlockedPatientComponent,
     BlockedDocComponent,
+    InvoiceComponent,
+    InvoiceViewComponent,
     // AppointmentComponent,
     // AppointmentDetailsComponent,
     // AppointmentAddComponent,
