@@ -11,7 +11,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
-  styleUrls: ['./appointment.component.css']
+  styleUrls: ['./appointment.component.css'],
 })
 export class DocAppointmentComponent {
   public dataSource!: MatTableDataSource<Appointment>;
@@ -47,5 +47,9 @@ export class DocAppointmentComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  cancel() {
+    const url = `/profile/doctor/${this.id}`;
+    this.router.navigateByUrl(url);
   }
 }

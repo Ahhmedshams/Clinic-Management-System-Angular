@@ -19,6 +19,8 @@ import { MatCardModule } from '@angular/material/card';
 import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     GetEmployeeComponent,
@@ -44,6 +46,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     NgConfirmModule,
     NgToastModule,
     MatCardModule,
+    MatSelectModule,
   ],
   exports: [GetEmployeeComponent, UpdateEmployeeComponent],
 })

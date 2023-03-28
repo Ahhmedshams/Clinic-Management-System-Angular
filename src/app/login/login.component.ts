@@ -49,23 +49,23 @@ export class LoginComponent {
           localStorage.setItem('id', this.decodedToken.id);
           switch (this.decodedToken.role) {
             case "doctor":
-              this.router.navigateByUrl(`/doctor/${this.decodedToken.id}`);
+              this.router.navigateByUrl(`/profile/doctor/${this.decodedToken.id}`);
               break;
             case "employee":
-              this.router.navigateByUrl(`/employee/${this.decodedToken.id}`);
+              this.router.navigateByUrl(`/profile/employee/${this.decodedToken.id}`);
               break;
             case "patient":
-              this.router.navigateByUrl(`/patient/${this.decodedToken.id}`);
+              this.router.navigateByUrl(`/profile/patient/${this.decodedToken.id}`);
               break;
             default:
               this.router.navigateByUrl(`/login`);
           }
         }else{
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/dashbord');
             }
       },
       err=>{
-        console.clear();
+        // console.clear();
          this._snackBar.open("Your Email Or Password Incorrect","ok",{
           duration: 3000,
           verticalPosition: 'bottom',

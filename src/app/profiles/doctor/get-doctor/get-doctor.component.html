@@ -33,6 +33,12 @@
             </p>
             <!--all buttons -->
             <a
+              routerLink="/home"
+              routerLinkActive="router-link-active"
+              class="btn btn-info"
+              >Home</a
+            >
+            <a
               [routerLink]="['/profile/doctor/', 'update', docObj._id]"
               routerLinkActive="router-link-active"
               class="btn btn-info"

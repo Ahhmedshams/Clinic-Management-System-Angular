@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { DashboardModule } from './module/dashboard/dashboard.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -24,6 +24,9 @@ import { RegisterationModule } from './registeration/registeration.module';
 import {  ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { TokenInterceptorService } from './custom/validations/token-interceptor.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './gaurds/auth.guard';
 
 
 
@@ -55,7 +58,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule,
     MatFormFieldModule
   ],
-  providers: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [
+    AuthService,
+    AuthGuard,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

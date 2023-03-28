@@ -12,12 +12,17 @@ import { Calendar } from 'src/app/models/calendar';
 @Component({
   selector: 'app-calender',
   templateUrl: './calender.component.html',
-  styleUrls: ['./calender.component.css']
+  styleUrls: ['./calender.component.css'],
 })
 export class CalenderComponent {
   public dataSource!: MatTableDataSource<Calendar>;
   calender: Calendar[] = [];
-  displayedColumns: string[] = ['Date','TimeTable','TotalWorkingHours','AvailableHours'];
+  displayedColumns: string[] = [
+    'Date',
+    'TimeTable',
+    'TotalWorkingHours',
+    'AvailableHours',
+  ];
   id: Number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -48,5 +53,9 @@ export class CalenderComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  cancel() {
+    const url = `/profile/doctor/${this.id}`;
+    this.router.navigateByUrl(url);
   }
 }

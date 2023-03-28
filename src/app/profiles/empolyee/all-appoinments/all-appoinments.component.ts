@@ -49,4 +49,8 @@ export class AllAppoinmentsComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  cancel() {
+    const url = `/profile/employee/${this.id}`;
+    this.router.navigateByUrl(url);
+  }
 }

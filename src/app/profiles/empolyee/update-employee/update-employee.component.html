@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="employeeUpdateForm" class="row" (ngSubmit)="edit()">
+  <form [formGroup]="employeeUpdateForm" class="row">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input
@@ -84,13 +84,10 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Gender</mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="gender"
-        [errorStateMatcher]="matcher"
-        placeholder="Your gender"
-      />
+      <mat-select formControlName="gender">
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="femal">Female </mat-option>
+      </mat-select>
       <mat-icon mat-icon-button matSuffix>face</mat-icon>
 
       <mat-error
@@ -164,6 +161,7 @@
         class="btn btn-primary ms-3"
         type="submit"
         [disabled]="!employeeUpdateForm.valid"
+        (click)="edit()"
       >
         Update
       </button>
