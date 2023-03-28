@@ -15,7 +15,7 @@
         </mat-form-field>
 
         <mat-form-field style="width: 30%;">
-            <input matInput formControlName="age" min=18 placeholder="Age" type="number" id="age"   />
+            <input matInput formControlName="age" min=18 max="50" placeholder="Age" type="number" id="age"   />
             <mat-icon matSuffix>perm_identity</mat-icon>
           </mat-form-field>
 
@@ -85,7 +85,7 @@
             <mat-error *ngIf="doctorRegisterForm.errors?.['misMatch']">Passwords do not match</mat-error>
             <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
-        <button mat-raised-button color="primary" class="register-button" (click)="doctorRegister()"> Sign Up</button>
+        <button mat-raised-button color="primary" class="register-button" [disabled]="!doctorRegisterForm.valid" (click)="doctorRegister()"> Sign Up</button>
 
       </form>
     </mat-card-content>
