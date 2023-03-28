@@ -61,7 +61,7 @@ export class LoginComponent {
               this.router.navigateByUrl(`/login`);
           }
         }else{
-          this.router.navigateByUrl('/dashbord');
+          this.router.navigateByUrl('/dashboard');
             }
       },
       err=>{
