@@ -33,6 +33,8 @@ import { ListboxModule } from 'primeng/listbox';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { PopupComponent } from './components/popup/popup.component';
+import { findDoctorsComponent } from './components/findDoctors/findDoctors.component';
+
 @NgModule({
   declarations: [
    HomepageComponent,
@@ -50,6 +52,7 @@ import { PopupComponent } from './components/popup/popup.component';
     ShowinfoComponent,
     AppointmentComponent,
     PopupComponent,
+    findDoctorsComponent
   ],
   imports: [
     CommonModule,

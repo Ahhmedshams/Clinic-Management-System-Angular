@@ -8,6 +8,8 @@ import { ServicesComponent } from './components/home/servicesHome/services.compo
 import { HomepageComponent } from './homepage.component';
 import { AppComponent } from 'src/app/app.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+// import { DoctorsComponent } from './components/findDoctors/doctors.component';
+import {  findDoctorsComponent } from './components/findDoctors/findDoctors.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,7 @@ const routes: Routes = [
       {path:"services",component:ServicesComponent},
       {path:"price",component:PrescriptionListComponent},
       {path:"appointment",component:AppointmentComponent},
+      {path:"Home/doctors",component:findDoctorsComponent},
       { path: '', redirectTo: 'Home', pathMatch: 'full' },
     ],
   },
