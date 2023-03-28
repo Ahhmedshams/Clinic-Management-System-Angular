@@ -1,55 +1,6 @@
-<!--
-<form>
-
-  <div class="mb-3">
-    <label for="id" class="form-label">ID</label>
-    <input type="number" class="form-control" id="id"[(ngModel)] ='  med._id'disabled="true"/>
-  </div>
-  <div class="mb-3">
-    <label for="drugName" class="form-label">drugName</label>
-    <input type="text" class="form-control" id="drugName"[(ngModel)] =' med.drugName'>
-  </div>
-  <div class="mb-3">
-    <label for="dosage" class="form-label">dosage</label>
-    <input type="text" class="form-control" id="dosage"[(ngModel)] =' med.dosage'>
-  </div>
-  <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
-    <input type="text" class="form-control" id="description"[(ngModel)] =' med.description'>
-  </div>
-  <div class="mb-3">
-    <label  class="form-label">Form</label>
-    <select [(ngModel)] =' med.form' >
-      <option>cap</option>
-      <option>susp</option>
-      <option>jugs</option>
-      <option>cream</option>
-      <option>Eye_Drops</option>
-      <option>tab</option>
-    </select>
-  </div>
-  <div class="mb-3">
-    <label for="quantity" class="form-label">Quantity</label>
-    <input type="number" class="form-control" id="quantity"[(ngModel)] =' med.quantity'>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputP" class="form-label">MFD Date</label>
-    <input type="text" class="form-control" id="exampleInputP"[(ngModel)] =' med.mfd_date'>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPass" class="form-label">EXP Date</label>
-    <input type="text" class="form-control" id="exampleInputPass"[(ngModel)] =' med.exp_date'>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Archive</label>
-    <input type="boolen" class="form-control" id="exampleInputPassword1"[(ngModel)] =' med.archive'>
-  </div>
-
-  <button type="submit" class="btn btn-primary"(click)="saveEdit()">Save</button>
-</form> -->
 
 <div class="card col-8 mx-auto">
-  <h2 class="my-2 mx-auto" >New Medicine</h2>
+  <h2 class="my-2 mx-auto" >Edit Medicine</h2>
   <div class="card-body ">
 
     <form  [formGroup]="medicineAddForm">
@@ -94,10 +45,21 @@
       <mat-error *ngIf="quantity?.errors?.['minLength']"> quantity maxLength is  30 </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="col-12 ">
+    <!-- <mat-form-field class="col-12 ">
       <input formControlName="form" type="text" matInput placeholder="form" required>
       <mat-icon matSuffix>sentiment_satisfied_alt</mat-icon>
       <mat-error *ngIf="form?.errors?.['required']"> form is required </mat-error>
+  </mat-form-field> -->
+  <mat-form-field class="col-12 "  appearance="fill">
+    <mat-label>form</mat-label>
+    <mat-select formControlName="form">
+       <mat-option value="cap">cap</mat-option>
+      <mat-option value="susp">susp</mat-option>
+      <mat-option value="jugs">jugs</mat-option>
+      <mat-option value="cream">cream</mat-option>
+      <mat-option value="Eye_Drops">Eye_Drops</mat-option>
+      <mat-option value="tab">tab</mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field class="col-12 col-md-6">
     <input formControlName="exp_date" type="text" matInput placeholder="expire date " required>

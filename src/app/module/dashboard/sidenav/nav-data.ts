@@ -22,15 +22,18 @@ export const navbarData = [
       label:'Blocked'
    },
    {
-      routerLink: 'appointment',
+      routerLink: 'appointments',
       icon:'fa fa-calendar-check ',
-      label:'Appointment'
+      label:'Appointments'
    },
    {
       routerLink: 'medicines',
       icon:'fa fa-capsules ',
       label:'Medicines'
+   },
+   {
+      routerLink: 'invoices',
+      icon:'fa fa-file-invoice ',
+      label:'Invoices'
    }
 ]
-     
-   
