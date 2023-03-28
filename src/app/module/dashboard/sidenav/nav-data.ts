@@ -12,7 +12,7 @@ export const navbarData = [
      ,
    {
       routerLink: 'pending',
-      icon:'fa fa-server',
+      icon:'fa fa-users',
       label:'pending'
    }
    ,

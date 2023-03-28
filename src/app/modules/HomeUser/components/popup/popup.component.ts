@@ -9,7 +9,7 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 
 export class PopupComponent  {
  
-  
+  Type:String = "Confirm Booking"
   messege:String ="";
   response:boolean= false;
   constructor(public modalRef: MdbModalRef<PopupComponent>
