@@ -51,7 +51,7 @@ export class ReceptionestRegisterComponent {
       confirmPassword:['',[Validators.required]],
       // birth_date:[''],
       gender:[''],
-      phone:['',[Validators.required,Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g)]],
+      phone:['',[Validators.required,Validators.pattern(/^01[0125][0-9]{8}$/gm)]],
       address:this.fb.group({
         city:['',[Validators.required,Validators.maxLength(20)]],
         street:['',[Validators.maxLength(50)]],
@@ -65,10 +65,18 @@ export class ReceptionestRegisterComponent {
   {
     //console.log(this.employeeRegisterForm.value)
     this.authService.empRegister(this.employeeRegisterForm.value).subscribe(
-      data=>console.log(data),
+      data=>{
+        console.log(data);
+        this.router.navigateByUrl('');
+      },
       err=>{
-          this._snackBar.open(err.error.Error,"ok");
+        this._snackBar.open("Email Already Exist","ok",{
+          duration: 3000,
+          verticalPosition: 'bottom',
+         });
         }
      )
   }
 }
+
+
