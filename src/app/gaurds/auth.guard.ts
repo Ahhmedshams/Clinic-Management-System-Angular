@@ -19,28 +19,15 @@ export class AuthGuard implements CanActivate {
         let menu = route.url[0].path;
         if ((menu == 'doctors' || menu == 'patients' || menu == 'employees' || menu == 'dashboard'|| menu == 'medicine') && (this.authService.getRole() == "admin")) {
           return true;
+        } else if ((menu == 'doctor') && (this.authService.getRole() == "doctor")) {
+          return true;
         }
-        else if(menu =="profile")
-        {
-          let menu2=route.url[1].path
-           if ((menu2 == 'doctor') && (this.authService.getRole() == "doctor")) {
-            return true;
-          }
-          else if ((menu2 == 'patient') && (this.authService.getRole() == "patient")) {
-            return true;
-          } else if ((menu2 == 'employee') && (this.authService.getRole() == "employee")) {
-            return true;
-          }
-          else{
-            this.router.navigate(['']);
-          this.dialog.open(UpdateDialogComponent, {
-            data: {
-              message: `You Don't Have Access!`,
-            },
-          });
-          return false;
-          }
-        }else {
+        else if ((menu == 'patient') && (this.authService.getRole() == "patient")) {
+          return true;
+        } else if ((menu == 'employee') && (this.authService.getRole() == "employee")) {
+          return true;
+        }
+        else {
           this.router.navigate(['']);
           this.dialog.open(UpdateDialogComponent, {
             data: {
