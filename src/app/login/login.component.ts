@@ -32,12 +32,12 @@ export class LoginComponent {
     });
   }
   login(){
-    console.log(this.userLogForm.value);
+    // console.log(this.userLogForm.value);
     this.authService.login(this.userLogForm.value).subscribe(
       (data:any)=>
       {
-        console.log("-=-=---=-=-=-=-=---=-=--=-")
-        console.log(data.token);
+        // console.log("-=-=---=-=-=-=-=---=-=--=-")
+        // console.log(data.token);
         localStorage.setItem('token',data.token)
         this.decodedToken=this.helper.decodeToken(data.token)
         // console.log("agezy deocded token");
