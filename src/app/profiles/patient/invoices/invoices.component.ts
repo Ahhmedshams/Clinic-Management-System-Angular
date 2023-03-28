@@ -53,4 +53,8 @@ export class InvoicesComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  cancel() {
+    const url = `/profile/patient/${this.id}`;
+    this.router.navigateByUrl(url);
+  }
 }

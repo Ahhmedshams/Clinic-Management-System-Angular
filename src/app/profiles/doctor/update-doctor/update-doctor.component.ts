@@ -6,6 +6,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { MyErrorStateMatcher } from 'src/app/models/ErrorStateMatcher';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateDialogComponent } from 'src/app/update-dialog/update-dialog.component';
+
 @Component({
   selector: 'app-update-doctor',
   templateUrl: './update-doctor.component.html',

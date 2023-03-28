@@ -20,9 +20,15 @@ import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CalenderComponent } from './calender/calender.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [GetDoctorComponent, UpdateDoctorComponent, DocAppointmentComponent, CalenderComponent],
+  declarations: [
+    GetDoctorComponent,
+    UpdateDoctorComponent,
+    DocAppointmentComponent,
+    CalenderComponent,
+  ],
   imports: [
     CommonModule,
     ProfilesRoutingModule,
@@ -42,6 +48,7 @@ import { CalenderComponent } from './calender/calender.component';
     NgToastModule,
     NgConfirmModule,
     MatTabsModule,
+    MatSelectModule,
   ],
   exports: [GetDoctorComponent, UpdateDoctorComponent],
 })

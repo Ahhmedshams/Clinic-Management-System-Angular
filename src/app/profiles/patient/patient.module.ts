@@ -20,6 +20,8 @@ import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 import { MatTabsModule } from '@angular/material/tabs';
 import { InvoicesComponent } from './invoices/invoices.component';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     GetPatientComponent,
@@ -46,6 +48,7 @@ import { InvoicesComponent } from './invoices/invoices.component';
     NgToastModule,
     NgConfirmModule,
     MatTabsModule,
+    MatSelectModule,
   ],
   exports: [GetPatientComponent, UpdatePatientComponent],
 })
