@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
     if (this.authService.loggedIn()) {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
-        alert(menu);
         if ((menu == 'doctors' || menu == 'patients' || menu == 'employees' || menu == 'dashboard'|| menu == 'medicine') && (this.authService.getRole() == "admin")) {
           return true;
         }
@@ -43,7 +42,6 @@ export class AuthGuard implements CanActivate {
           }
         }else {
           this.router.navigate(['']);
-          // alert("ssssssss")
           this.dialog.open(UpdateDialogComponent, {
             data: {
               message: `You Don't Have Access!`,

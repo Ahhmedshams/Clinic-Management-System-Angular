@@ -7,9 +7,12 @@ import { HomepageComponent } from './modules/HomeUser/homepage.component';
 import { AuthGuard } from './gaurds/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AllRegisterComponent } from './all-register/all-register.component';
+import { NotFoundComponent } from './modules/HomeUser/components/not-found/not-found.component';
 
 
 const routes: Routes = [
+  { path: "register", component:AllRegisterComponent},
+  { path: "login", component: LoginComponent},
   {
     path: '',
     loadChildren: () =>
@@ -17,6 +20,7 @@ const routes: Routes = [
         (m) => m.HomepageModule
       ),
   },
+  
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -29,8 +33,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./profiles/profiles.module').then((p) => p.ProfilesModule ),
   canActivate:[AuthGuard] },
-  { path: "register", component:AllRegisterComponent},
-  { path: "login", component: LoginComponent},
+  { path: "**", component:NotFoundComponent},
+
 ];
 
 @NgModule({
