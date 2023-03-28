@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute } from '@angular/router';
 // import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
-
+import {Location} from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Medicine } from 'src/app/models/medicine';
 import { MedicineService } from 'src/app/services/medicine.service';
@@ -19,7 +19,7 @@ med?:Medicine;
 
   // constructor(public modalRef: MdbModalRef<MedicineDetailsComponent>,public  medicineService:MedicineService,private activateRoute:ActivatedRoute
   //   ) {}
-constructor(public  medicineService:MedicineService,private activateRoute:ActivatedRoute){}
+constructor(public  medicineService:MedicineService,private activateRoute:ActivatedRoute,private _location: Location){}
 
  ngOnInit(){
   this.activateRoute.params.subscribe(data=>{
@@ -35,4 +35,7 @@ constructor(public  medicineService:MedicineService,private activateRoute:Activa
 
   //  console.log(this.med)
  }
+ back(){
+  this._location.back();
+}
 }

@@ -22,7 +22,7 @@ export class ActiveDocComponent {
 
   public dataSource!: MatTableDataSource<Doctor>;
   doctor:Doctor[]=[];
-  displayedColumns: string[] = ['id', 'name', 'gender', 'email','phone','status','action'];
+  displayedColumns: string[] = ['id', 'name', 'gender', 'email','phone','clinic','action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -65,9 +65,12 @@ export class ActiveDocComponent {
   }
 
   Block(id: number) {
-    this.confirmService.showConfirm("Are you sure want  to block this user?",
+    this.confirmService.showConfirm("Are you sure want to block this user?",
      () => {
       this.doctorService.updateStatus(id,{status:"blocked"}).subscribe(data=>{})
+      this.doctor = this.doctor.filter(doc => doc._id != id);
+      this.dataSource = new MatTableDataSource(this.doctor);
+
     },
     () => {
       //yor logic if No clicked

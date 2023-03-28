@@ -26,8 +26,9 @@ const routes : Routes = [
 
     { path: 'main', component: MainComponent },
     { path: 'report', component: ReportComponent },
-    {path:"medicines",loadChildren:()=>import('./medicine/medicine.module').then(m=>m.MedicineModule)},
-    { path: 'appointment', loadChildren:()=>import('./appointment/appointment.module').then(m=>m.AppointmentModule)} ,
+    {path:'medicines',loadChildren:()=>import('./medicine/medicine.module').then(m=>m.MedicineModule)},
+    { path: 'appointments', loadChildren:()=>import('./appointment/appointment.module').then(m=>m.AppointmentModule)} ,
+    { path: 'invoices', loadChildren:()=>import('./invoice/invoice.module').then(m=>m.InvoiceModule)} ,
 
   ]},
 ]

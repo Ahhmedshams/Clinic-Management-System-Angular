@@ -10,6 +10,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 import { FormBuilder,FormsModule,ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MedicineRoutingModule } from './medicine-routing.module';
@@ -32,7 +34,7 @@ import { MedicineEditComponent } from './medicine-edit/medicine-edit.component';
     MatTabsModule,NgConfirmModule,
     MatInputModule,MatFormFieldModule,
     MatButtonModule,MatCardModule,
-    MatSortModule,
+    MatSortModule,MatIconModule,MatSelectModule,
     MatTableModule,MatPaginatorModule,
     FormsModule,RouterModule
     ,ReactiveFormsModule,

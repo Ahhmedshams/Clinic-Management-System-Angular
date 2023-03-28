@@ -26,16 +26,18 @@ export class AddediteformComponent {
     public medicineList:any ;
     public prescription:any;
    
-    public data: Prescription= new Prescription(2,this.myDataForEdite?.date?.split("T")[0]||this.date,1,1,[1,3],this.myDataForEdite?.description||"please enter description") ;//3799139
+    public data: Prescription= new Prescription(2,this.myDataForEdite?.date?.split("T")[0]||this.date,3,1,[1,3],this.myDataForEdite?.description||"please enter description") ;//3799139
     
      
     
     ngOnInit()
     {
-      console.log(this.myDataForEdite);
+      // console.log(this.myDataForEdite);
       
      this.prescriServes.getAll().subscribe(data=>{
+       
        this.prescription=data;
+      //id =3 // service doctors search by name (this.id) 
      })
    
      // this.patientServes

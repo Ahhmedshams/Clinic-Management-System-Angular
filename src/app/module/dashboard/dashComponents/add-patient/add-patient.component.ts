@@ -13,6 +13,7 @@ import { Patient } from 'src/app/models/patient';
   styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent implements OnInit {
+  Action:String = "New Patient";
   patientAddForm!:FormGroup;
   public idToUpdate!:Number;
   public isUpdateActive: boolean = false;
@@ -49,6 +50,7 @@ ngOnInit(): void {
     this.patientService.getById(this.idToUpdate).subscribe(res=>{
       this.isUpdateActive= true;
       this.fillFormToUpdate(res)
+      this.Action = "Edit Patient";
     })
   })
 }

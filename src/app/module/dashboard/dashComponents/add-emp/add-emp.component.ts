@@ -13,6 +13,7 @@ import { Employee } from 'src/app/models/employee';
   styleUrls: ['./add-emp.component.css']
 })
 export class AddEmpComponent {
+  Action:String = "New Employee"
   empAddForm!:FormGroup;
   clinins:Clinic[]=[];
   public idToUpdate!:Number;
@@ -57,6 +58,7 @@ export class AddEmpComponent {
       this.employeeService.getById(this.idToUpdate).subscribe(res=>{
         this.isUpdateActive= true;
         this.fillFormToUpdate(res)
+        this.Action = "Edit Employee"
       })
     })
 
@@ -70,7 +72,7 @@ fillFormToUpdate(emp:Employee){
       gender:emp.gender,
       age:30,
       salary:emp.salary,
-      clinic:emp.clinicId._id,
+      clinic:emp.clinicId?._id??1,
       phone:emp.phone,
       password:'',
       confirmPassword:"",

@@ -55,7 +55,9 @@ export class ActivePatientComponent {
   Block(id: number) {
     this.confirmService.showConfirm("Are you sure want  to block this user?",
      () => {
-      this.patientService.updateStatus(id,{status:"blocked"}).subscribe(data=>{})
+      this.patientService.updateStatus(id,{status:"blocked"}).subscribe(data=>{});
+      this.patient = this.patient.filter(element => element._id != id);
+      this.dataSource = new MatTableDataSource(this.patient);
     },
     () => {
       //yor logic if No clicked

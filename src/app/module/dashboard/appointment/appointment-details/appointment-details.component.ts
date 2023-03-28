@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
 
 import { Appointment } from 'src/app/models/appointment';
 import { Clinic } from 'src/app/models/clinic';
@@ -23,7 +24,7 @@ patient?:Patient;
 doc?:Doctor;
  constructor(public appointmentService:AppointmentService,
   public clinicService:ClinicService,
-  public patientService:PatientService,
+  public patientService:PatientService,private _location: Location,
   public doctorService:DoctorService,
   private activateRoute:ActivatedRoute){}
  ngOnInit(){
@@ -47,5 +48,8 @@ console.log(this.doc)
   })
   console.log(this.appoint)
   console.log(this.appointmentService.getCalenderByDocId(this.appoint?.doctorId._id))
+}
+back(){
+  this._location.back();
 }
 }

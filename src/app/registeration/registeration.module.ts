@@ -54,15 +54,15 @@ import { RouterModule } from '@angular/router';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
-    AuthService,
-    AuthGuard,
+    // AuthService,
+    // AuthGuard,
     // ReceptionistService,
     // { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:TokenInterceptorService,
-      multi:true
-    }
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass:TokenInterceptorService,
+    //   multi:true
+    // }
   ],
   exports:[
     PatientRegisterComponent,
