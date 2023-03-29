@@ -41,7 +41,7 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
     <td mat-cell *matCellDef="let row">
       <button mat-button >
-        <a [routerLink]="['/invoices','details',row._id]" routerLinkActive="active1" class="text-decoration-none"> View </a>
+        <a [routerLink]="['details',row._id]" routerLinkActive="active1" class="text-decoration-none"> View </a>
       </button>
 
     </td>

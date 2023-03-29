@@ -62,7 +62,7 @@ delete(id:number){
   // }
   }
   edit(id:number){
-    this.router.navigateByUrl('/medicines/edit/'+id)
+    this.router.navigateByUrl('/dashboard/medicines/edit/'+id)
 
   }
 

@@ -15,10 +15,6 @@ export class MedicineAddComponent {
   medicineAddForm!:FormGroup;
   med!:Medicine;
   date= moment(new Date()).format("yyyy-MM-DD");
-<<<<<<< HEAD
-=======
-
->>>>>>> f808d33a058a6c8f5004e5a010ac1423c8aec7dd
   constructor(public  medicineService:MedicineService,
     public router:Router,
     private _location: Location,
