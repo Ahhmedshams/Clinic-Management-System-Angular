@@ -26,6 +26,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
   tomorrow:boolean= false;
   TodaySelect!:Schedule;
   TMRSelect!:Schedule;
+  PatientId!:Number;
   doctor:Doctor = new Doctor(1,"","","",1,"","",1,1);
   calender!:Calendar;
   constructor(
@@ -44,6 +45,9 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
       this.initTMRCal()
     }
 )
+
+  
+    this.PatientId= Number(window.localStorage.getItem('id') )
 
   }
 
@@ -78,7 +82,6 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
   
 
   ngAfterViewInit(): void {
-    console.log("cc")
   }
  
   excBookToday(){
@@ -90,7 +93,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
       startAt:this.TodaySelect.code
     }
 
-    this.appointmentService.post(1,data).subscribe(res=>{
+    this.appointmentService.post(this.PatientId,data).subscribe(res=>{
       console.log(res)
     })
   }
@@ -104,6 +107,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
     this.modalRef.onClose.subscribe((messege?)=>{
       if(messege){
         this.excBookToday()
+        window.location.reload()
       }
     })
     
@@ -122,7 +126,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
       startAt:this.TMRSelect.code
     }
 
-    this.appointmentService.post(1,data).subscribe(res=>{
+    this.appointmentService.post(this.PatientId,data).subscribe(res=>{
       console.log(res)
     })
   }
@@ -135,7 +139,8 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
     this.modalRef.onClose.subscribe((messege?)=>{
       if(messege){
         this.excBookToday()
-      }
+        window.location.reload()
+            }
     })
   }
 }
