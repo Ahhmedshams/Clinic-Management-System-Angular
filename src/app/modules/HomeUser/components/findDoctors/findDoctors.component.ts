@@ -22,21 +22,19 @@ constructor(public doctorService:DoctorService,
   ngOnInit(){
     this.doctorService.getAll().subscribe(data=>{
     this.allSpeciality= [...new Set(data.map(ele=> ele.speciality ))]
-        
-      
       this.doctors=data;
       this.doctorsMain=data;
     })
   }
 
   changeSearch(e:any){
-    if(e.target.value){this.doctorService.getAll().subscribe(data=>{
-      this.doctors= data.filter(ele=>
-      data[ele.name.search(e.target.value[0]?.toUpperCase()+e.target.value.slice(1,)) ]
-    
+    if(e.target.value){this.doctorService.getAll().subscribe(data=>{this.doctors= data.filter((ele:any)=>{
+      return new RegExp(e.target.value, 'i').test(ele.name)}
+ 
+     
       
-      )})} 
-    else{this.doctorService.getAll().subscribe(data=>{  this.doctors=data;})}
+       )})} 
+     else{this.doctorService.getAll().subscribe(data=>{  this.doctors=data;})}
   }
 
 

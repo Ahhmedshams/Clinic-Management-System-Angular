@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update-dialog',
@@ -7,5 +7,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./update-dialog.component.css'],
 })
 export class UpdateDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,public dialogRef: MatDialogRef<UpdateDialogComponent>) {}
+
+  closeDialog(value?: any) {
+    // Perform additional actions before closing the dialog box, if needed
+    // ...
+    this.dialogRef.close(value);
+  }
 }

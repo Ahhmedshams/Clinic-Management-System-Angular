@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import {JwtHelperService}from '@auth0/angular-jwt';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { EmployeeService } from '../services/employee.service';
+import { DoctorService } from '../services/doctor.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,9 @@ export class LoginComponent {
   get password(){
     return this.userLogForm.get('password'); 
   }
-  constructor(public fb:FormBuilder ,public authService:AuthService,public router:Router,private _snackBar: MatSnackBar ){}
+  constructor(public fb:FormBuilder ,public authService:AuthService,public router:Router,private _snackBar: MatSnackBar
+    ,public employeeService:EmployeeService,public doctorService:DoctorService
+    ){}
 
   userLogForm!:FormGroup;
   token:any;
@@ -28,31 +32,44 @@ export class LoginComponent {
     this.userLogForm= this.fb.group({
       email:['',Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/)],
       password:['',[Validators.required]],
-      // typeOptions:[getCheckedRadio, [Validators.required]]
     });
   }
   login(){
-    // console.log(this.userLogForm.value);
     this.authService.login(this.userLogForm.value).subscribe(
       (data:any)=>
       {
-        // console.log("-=-=---=-=-=-=-=---=-=--=-")
-        // console.log(data.token);
         localStorage.setItem('token',data.token)
         this.decodedToken=this.helper.decodeToken(data.token)
-        // console.log("agezy deocded token");
-        // console.log(this.decodedToken);
-        // this.router.navigateByUrl('/receptionist');
         localStorage.setItem('role', this.decodedToken.role);
 
         if (this.decodedToken.id) {
           localStorage.setItem('id', this.decodedToken.id);
           switch (this.decodedToken.role) {
             case "doctor":
-              this.router.navigateByUrl(`/profile/doctor/${this.decodedToken.id}`);
+              {  
+                this.doctorService.getById(this.decodedToken.id).subscribe((data) => {
+                  if (data.status == 'active') {
+                    this.router.navigateByUrl(`/profile/doctor/${this.decodedToken.id}`);
+                  } else {
+                    localStorage.clear();
+                    this.router.navigateByUrl('/login')
+                    this.userLogForm.reset();
+                  }
+                });
+              }
               break;
             case "employee":
-              this.router.navigateByUrl(`/profile/employee/${this.decodedToken.id}`);
+              {
+                this.employeeService.getById(this.decodedToken.id).subscribe((data) => {
+                  if (data.status == 'active') {
+                    this.router.navigateByUrl(`/profile/employee/${this.decodedToken.id}`);
+                  } else {
+                    localStorage.clear();
+                    this.router.navigateByUrl('/login')
+                    this.userLogForm.reset();
+                  }
+                });
+              }  
               break;
             case "patient":
               this.router.navigateByUrl(`/profile/patient/${this.decodedToken.id}`);
