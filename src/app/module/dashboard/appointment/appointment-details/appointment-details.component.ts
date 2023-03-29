@@ -41,7 +41,7 @@ this.patient=data;
 })
 this.doctorService.getById(this.appoint?.doctorId).subscribe(data=>{
 this.doc=data;
-console.log(this.doc)
+// console.log(this.doc)
 })
       })
     })

@@ -37,24 +37,10 @@ export class AppointmentScanComponent {
 
    }
   ngOnInit(){
-    // let m=new Date().getMonth();
-    // let d=new Date().getDate();
-    // let y=new Date().getFullYear();
-    // if(m<10){
-    //   if(d<10){
-    //     this.date=y+"-0"+(m+1) +"-0"+  d;
-    //   }
-    //   else{
-
-    //     this.date=y+"-0"+(m+1) +"-"+  d;
-    //   }
-    // }
 
     this.date =  moment(new Date()).format("yyyy-MM-DD");
-    // console.log(this.date);
 
     this.clinicService.getAll().subscribe(data=>{
-
       this.clinic=data;
     })
 this.appointmentService.getAll().subscribe(data=>{
@@ -70,22 +56,5 @@ this.appointmentService.getAll().subscribe(data=>{
 
 
         }
-//  getPatient(id:number){
-
-//    this.patientService.getById(id).subscribe(data=>{
-//    this.patient=data;
-//    console.log(this.patient)
-//    })
-//         }
-//  getDr(id:number){
-//         this.doctorService.getById(id).subscribe(data=>{
-//         this.doctor=data;
-//         console.log(this.doctor)
-//        })
-//       }
-//  calender(id:number){
-//   return this.calenderService.getById(id)
-//  }
-
 
  }

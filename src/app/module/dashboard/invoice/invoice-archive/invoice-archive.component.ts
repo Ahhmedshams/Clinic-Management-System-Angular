@@ -10,16 +10,14 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 import { PatientService } from 'src/app/services/patient.service';
 
 @Component({
-  selector: 'app-invoice',
-  templateUrl: './invoice.component.html',
-  styleUrls: ['./invoice.component.css']
+  selector: 'app-invoice-archive',
+  templateUrl: './invoice-archive.component.html',
+  styleUrls: ['./invoice-archive.component.css']
 })
-export class InvoiceComponent {
+export class InvoiceArchiveComponent {
   invoice:Invoice[]=[];
-  // invoiceArchive:Invoice[]=[];
   x:Number[]=[]
   public  dataSource!:MatTableDataSource <Invoice>;
-  // public  dataSource2!:MatTableDataSource <Invoice>;
   displayedColumns: string[] = ['id','patient', 'paymentType', 'totalCost','date', 'doctor','action'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -31,15 +29,11 @@ export class InvoiceComponent {
    ngOnInit(){
    this.invoiceService.getAll().subscribe(data=>{
 
-      this.invoice=data.filter(a=>a.archive==false);
-      // this.invoiceArchive=data.filter(a=>a.archive==true);
+      this.invoice=data.filter(a=>a.archive==true);
       this.dataSource = new MatTableDataSource(this.invoice);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      // console.log(this.invoiceArchive)
-      // this.dataSource2 = new MatTableDataSource(this.invoiceArchive);
-      // this.dataSource2.paginator = this.paginator;
-      // this.dataSource2.sort = this.sort;
+
     })
 
     }
@@ -53,21 +47,4 @@ export class InvoiceComponent {
     this.dataSource.paginator.firstPage();
   }
 }
-delete(id:number){
-  this.confirmService.showConfirm("Are you sure want to delete this Invoice?",
-     () => {
-      this.invoiceService.deleteById(id).subscribe(data=>{console.log(data+"delete")})
-
-    let stdIndex=this.invoice.findIndex(obj=>obj._id==id);
-    this.invoice.splice(stdIndex,1)[0];
-    this.dataSource = new MatTableDataSource(this.invoice);
-    // this.router.navigateByUrl('/invoices');
-    window.location.reload();
-    },
-    () => {
-      //yor logic if No clicked
-    })
-
-  // }
-  }
 }

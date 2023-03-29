@@ -4,6 +4,7 @@ import { FormBuilder,FormsModule,ReactiveFormsModule, FormControl, FormGroup, Va
 import {Location} from '@angular/common';
 import { Medicine } from 'src/app/models/medicine';
 import { MedicineService } from 'src/app/services/medicine.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-medicine-add',
@@ -13,8 +14,7 @@ import { MedicineService } from 'src/app/services/medicine.service';
 export class MedicineAddComponent {
   medicineAddForm!:FormGroup;
   med!:Medicine;
-  date=new Date().getFullYear()+'-'+new Date().getMonth()+'-'+new Date().getDate();
-
+  date= moment(new Date()).format("yyyy-MM-DD");
   constructor(public  medicineService:MedicineService,
     public router:Router,
     private _location: Location,

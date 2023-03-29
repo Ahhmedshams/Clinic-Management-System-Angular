@@ -18,6 +18,7 @@ import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentDetailsComponent } from './appointment-details/appointment-details.component';
 import { AppointmentTableComponent } from './appointment-table/appointment-table.component';
 import { AppointmentScanComponent } from './appointment-scan/appointment-scan.component';
+import { AppointmentArchiveComponent } from './appointment-archive/appointment-archive.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AppointmentScanComponent } from './appointment-scan/appointment-scan.co
 
     AppointmentDetailsComponent,
     AppointmentTableComponent,
-    AppointmentScanComponent
+    AppointmentScanComponent,
+    AppointmentArchiveComponent
   ],
   imports: [
     CommonModule,

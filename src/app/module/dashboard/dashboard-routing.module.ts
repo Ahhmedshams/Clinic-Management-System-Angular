@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppointmentComponent } from 'src/app/modules/HomeUser/appointment/appointment.component';
+import { AppointmentTableComponent } from './appointment/appointment-table/appointment-table.component';
 import { BlockedComponent } from './blocked/blocked.component';
 // import { AppointmentComponent } from './appointment/appointment.component';
 import { DashboardComponent } from './dashboard.component';

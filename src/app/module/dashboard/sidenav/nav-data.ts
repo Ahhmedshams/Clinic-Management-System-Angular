@@ -4,12 +4,7 @@ export const navbarData = [
     icon:'fal fa-home',
     label:'Dashboard'
    } ,
-   {
-      routerLink: 'report',
-      icon:'fal fa-chart-bar',
-      label:'Report'
-     }
-     ,
+
    {
       routerLink: 'pending',
       icon:'fa fa-server',

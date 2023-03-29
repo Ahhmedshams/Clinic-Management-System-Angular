@@ -14,9 +14,7 @@ import { AppointmentService } from 'src/app/services/appointment.service';
 export class AppointmentTableComponent {
    testModal=false;
  appointment:Appointment[]=[];
- appointmentArchive:Appointment[]=[];
  public dataSource!: MatTableDataSource<Appointment>;
- public dataSource2!: MatTableDataSource<Appointment>;
  displayedColumns: string[] = ['id', 'name', 'Dr name', 'date','time'/*,'Scaned'*/,'action'];
 
  @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,17 +22,10 @@ export class AppointmentTableComponent {
  constructor(public appointmentService:AppointmentService){}
  ngOnInit(){
   this.appointmentService.getAll().subscribe(data=>{
-    console.log(data)
     this.appointment=data.filter(p =>p.archive==false);
     this.dataSource = new MatTableDataSource(this.appointment);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    // archive
-    this.appointmentArchive=data.filter(p =>p.archive==true );
-    this.dataSource2 = new MatTableDataSource(this.appointmentArchive);
-      this.dataSource2.paginator = this.paginator;
-      this.dataSource2.sort = this.sort;
-// console.log(this.appointment)
   })
  }
  printData(){
@@ -48,13 +39,6 @@ applyFilter(event: Event) {
     this.dataSource.paginator.firstPage();
   }
 }
-applyFilter2(event: Event) {
-  const filterValue = (event.target as HTMLInputElement).value;
-  this.dataSource2.filter = filterValue.trim().toLowerCase();
 
-  if (this.dataSource2.paginator) {
-    this.dataSource2.paginator.firstPage();
-  }
-}
 
 }
