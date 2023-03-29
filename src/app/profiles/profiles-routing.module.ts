@@ -11,6 +11,8 @@ import { InvoicesComponent } from './patient/invoices/invoices.component';
 import { AllAppoinmentsComponent } from './empolyee/all-appoinments/all-appoinments.component';
 import { DocAppointmentComponent } from './doctor/appointment/appointment.component';
 import { CalenderComponent } from './doctor/calender/calender.component';
+import { PrescriptionListComponent } from './doctor/prescription/prescription-list/prescription-list.component';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 const routes: Routes = [
   { path: 'patient/:id', component: GetPatientComponent },
@@ -26,6 +28,7 @@ const routes: Routes = [
   { path: 'doctor/update/:id', component: UpdateDoctorComponent },
   { path: 'doctor/appointment/:id', component: DocAppointmentComponent },
   { path: 'doctor/calender/:id', component: CalenderComponent },
+  { path: 'doctor/prescription/:id', component: PrescriptionListComponent },
 ];
 
 @NgModule({
