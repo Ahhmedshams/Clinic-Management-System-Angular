@@ -31,7 +31,7 @@ export class UpdateDoctorComponent implements OnInit {
       password: ['', [Validators.required]],
       phone: [
         '',
-        [Validators.required, Validators.pattern('01[0125](-)?[0-9]{8}')],
+        [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/gm)],
       ],
       gender: ['', [Validators.required]],
       yearsOfExperience: ['', [Validators.required]],

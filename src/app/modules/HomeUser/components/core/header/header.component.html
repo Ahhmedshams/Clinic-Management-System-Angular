@@ -13,7 +13,9 @@
                     <a  routerLinkActive="active"  routerLink="Home" class="nav-item nav-link">Home</a>
                     <a  routerLinkActive="active" routerLink="about" class="nav-item nav-link ">About</a>
                     <a  routerLinkActive="active" routerLink="services" class="nav-item nav-link">Service</a>
-                    <a  routerLinkActive="active" routerLink="login" class="nav-item nav-link">login</a>
+                    <a  *ngIf="isLogged" routerLinkActive="active" (click)="profile()" class="nav-item nav-link">Profile</a>
+                    <a *ngIf="!isLogged" routerLinkActive="active"  routerLink="login" class="nav-item nav-link">login</a>
+                    <a  *ngIf="isLogged" routerLinkActive="active" (click)="logout()" class="nav-item nav-link">Logout</a>
 
                 </div>
             </div>

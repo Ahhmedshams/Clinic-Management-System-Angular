@@ -22,7 +22,7 @@ export class AllAppoinmentsComponent implements OnInit {
     'Time',
     'Clinic',
   ];
-  id: Number = 0;
+  id:any = localStorage.getItem("id");
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
