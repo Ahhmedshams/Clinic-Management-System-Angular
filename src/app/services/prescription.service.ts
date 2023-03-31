@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Prescription } from '../models/prescription';
 import { HttpClient } from '@angular/common/http';
+import { PrescriptionGet } from '../models/prescriptionGet';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class PrescriptionService {
   constructor(public http:HttpClient) {}
 
   getAll(){
-    return this.http.get<Prescription[]>(this.baseUrl)
+    return this.http.get<PrescriptionGet[]>(this.baseUrl)
   }
 
 

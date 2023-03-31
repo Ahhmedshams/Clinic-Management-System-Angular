@@ -6,6 +6,7 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { MyErrorStateMatcher } from 'src/app/models/ErrorStateMatcher';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateDialogComponent } from 'src/app/update-dialog/update-dialog.component';
+
 @Component({
   selector: 'app-update-doctor',
   templateUrl: './update-doctor.component.html',
@@ -26,11 +27,11 @@ export class UpdateDoctorComponent implements OnInit {
   ) {
     this.doctorUpdateForm = this.fb.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required ,Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/)]],
       password: ['', [Validators.required]],
       phone: [
         '',
-        [Validators.required, Validators.pattern('01[0125](-)?[0-9]{8}')],
+        [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/gm)],
       ],
       gender: ['', [Validators.required]],
       yearsOfExperience: ['', [Validators.required]],

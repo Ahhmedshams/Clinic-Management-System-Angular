@@ -20,7 +20,7 @@ export class ActiveEmpComponent {
   modalRef: MdbModalRef<ViewEmpComponent> | null = null;
   public dataSource!: MatTableDataSource<Employee>;
   emps:Employee[]=[];
-  displayedColumns: string[] = ['id', 'name', 'gender', 'email','phone','status','action'];
+  displayedColumns: string[] = ['id', 'name', 'gender', 'email','phone','clinic','action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -61,6 +61,8 @@ export class ActiveEmpComponent {
     this.confirmService.showConfirm("Are you sure want  to block this user?",
      () => {
       this.empService.updateStatus(id,{status:"blocked"}).subscribe(data=>{})
+      this.emps = this.emps.filter(emp => emp._id != id);
+      this.dataSource = new MatTableDataSource(this.emps);
     },
     () => {
       //yor logic if No clicked

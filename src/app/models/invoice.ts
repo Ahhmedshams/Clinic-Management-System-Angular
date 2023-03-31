@@ -4,7 +4,8 @@ export class Invoice {
     public paymentType: String,
     public totalCost: Number,
     public date: String,
-    public doctorId: Number,
-    public patientId: Number
+    public doctor: any,
+    public patient: any,
+        public archive?:boolean,
   ) {}
 }

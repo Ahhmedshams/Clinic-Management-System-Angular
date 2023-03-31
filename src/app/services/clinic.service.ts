@@ -13,4 +13,7 @@ export class ClinicService {
   getAll(){
     return this.http.get<Clinic[]>(this.baseUrl)
   }
+  getById(id:Number){
+    return this.http.get<Clinic>(this.baseUrl+id)
+  }
 }

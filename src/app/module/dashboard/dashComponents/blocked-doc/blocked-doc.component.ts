@@ -52,16 +52,16 @@ export class BlockedDocComponent {
     }
   }
 
-  accept(id:Number)
-  {
-    this.doctorService.updateStatus(id,{status:"active"}).subscribe(data=>{})
-  }
+
  
 
   unBlock(id: number) {
     this.confirmService.showConfirm("Are you sure want  to Un Block this user?",
      () => {
       this.doctorService.updateStatus(id,{status:"active"}).subscribe(data=>{})
+      this.doctor = this.doctor.filter(doc=>doc._id!=id);
+      this.dataSource = new MatTableDataSource(this.doctor);
+
     },
     () => {
       //yor logic if No clicked

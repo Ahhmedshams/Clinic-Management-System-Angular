@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./add-doc.component.css']
 })
 export class AddDocComponent implements OnInit {
+  Action:String = "New Doctor"
   doctorAddForm!:FormGroup;
   clinins:Clinic[]=[];
   newDoc!:Doctor;
@@ -63,6 +64,7 @@ export class AddDocComponent implements OnInit {
       this.doctorService.getById(this.idToUpdate).subscribe(res=>{
         this.isUpdateActive= true;
         this.fillFormToUpdate(res)
+        this.Action = "Edit Doctor"
       })
     })
     
@@ -79,9 +81,9 @@ export class AddDocComponent implements OnInit {
       age:30,
       speciality:doctor.speciality,
       yearsOfExperience:doctor.yearsOfExperience,
-      clinic:doctor.clinicId,
       price:doctor.price,
       phone:doctor.phone,
+      
       password:'',
       confirmPassword:"",
       address:{
@@ -89,6 +91,7 @@ export class AddDocComponent implements OnInit {
         street:doctor.address.street,
         building:doctor.address.building,
       },
+      clinic:doctor.clinicId?._id,
     })
   }
 
@@ -110,7 +113,7 @@ export class AddDocComponent implements OnInit {
     
      }
     
-     this.doctorService.edit(doctor).subscribe(()=>{
+     this.doctorService.edit(doctor , doctor._id).subscribe(()=>{
        console.log("done")
        this._location.back();
    

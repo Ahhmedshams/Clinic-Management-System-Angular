@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { PopupComponent } from '../components/popup/popup.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-appointment',
@@ -17,14 +18,15 @@ import { PopupComponent } from '../components/popup/popup.component';
 export class AppointmentComponent  implements OnInit  , AfterViewInit{
   modalRef: MdbModalRef<PopupComponent> | null = null;
 
-  schedule =new Array<Schedule>({name:"Show" , code:""} );
-  TMRSchedule =new Array<Schedule>({name:"Show" , code:""} );
-  doctorID:Number = 1
+  schedule =new Array<Schedule>({name:"Show" , code:"Not Avalible"} );
+  TMRSchedule =new Array<Schedule>({name:"Show" , code:"Not Avalible"} );
+  doctorID!:Number 
   value:Number = 4;
   today:boolean = false;
   tomorrow:boolean= false;
   TodaySelect!:Schedule;
   TMRSelect!:Schedule;
+  PatientId!:Number;
   doctor:Doctor = new Doctor(1,"","","",1,"","",1,1);
   calender!:Calendar;
   constructor(
@@ -32,17 +34,20 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
     private calenderService:CalenderService,
     private appointmentService:AppointmentService,
     public modalService:MdbModalService,
-
+    private activatedRoute:ActivatedRoute
   ){}
 
   ngOnInit(): void {
-    
-    this.doctorService.getById(this.doctorID).subscribe((data)=>{
-      this.doctor = data;
-    })
-    this.initTodayCal()
-    this.initTMRCal()
-    
+    this.activatedRoute.params.subscribe(val=>{
+      this.doctorID=val["id"]
+      this.doctorService.getById(this.doctorID).subscribe((data)=>{this.doctor = data;})
+      this.initTodayCal()
+      this.initTMRCal()
+    }
+)
+
+  
+    this.PatientId= Number(window.localStorage.getItem('id') )
 
   }
 
@@ -55,7 +60,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
          this.schedule.push({ name: element, code: element })
         }); 
       }else{
-        this.schedule[0].name="Not Avalible"
+        this.schedule[0].name=this.schedule[0].code="Not Avalible"
       }
        
     })
@@ -69,8 +74,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
        this.TMRSchedule.push({ name: element, code: element })
       });
       }else{
-        console.log("empty")
-        this.TMRSchedule[0].name="Not Avalible"
+        this.TMRSchedule[0].name=this.TMRSchedule[0].code="Not Avalible"
       }
          
     })
@@ -78,7 +82,6 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
   
 
   ngAfterViewInit(): void {
-    console.log("cc")
   }
  
   excBookToday(){
@@ -90,7 +93,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
       startAt:this.TodaySelect.code
     }
 
-    this.appointmentService.post(1,data).subscribe(res=>{
+    this.appointmentService.post(this.PatientId,data).subscribe(res=>{
       console.log(res)
     })
   }
@@ -104,6 +107,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
     this.modalRef.onClose.subscribe((messege?)=>{
       if(messege){
         this.excBookToday()
+        window.location.reload()
       }
     })
     
@@ -122,7 +126,7 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
       startAt:this.TMRSelect.code
     }
 
-    this.appointmentService.post(1,data).subscribe(res=>{
+    this.appointmentService.post(this.PatientId,data).subscribe(res=>{
       console.log(res)
     })
   }
@@ -135,7 +139,8 @@ export class AppointmentComponent  implements OnInit  , AfterViewInit{
     this.modalRef.onClose.subscribe((messege?)=>{
       if(messege){
         this.excBookToday()
-      }
+        window.location.reload()
+            }
     })
   }
 }

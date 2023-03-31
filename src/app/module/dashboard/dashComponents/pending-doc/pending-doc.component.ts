@@ -52,17 +52,14 @@ export class PendingDocComponent {
     }
   }
 
-  accept(id:Number)
-  {
-    this.doctorService.updateStatus(id,{status:"active"}).subscribe(data=>{}
-     )
-  }
  
 
   Block(id: number) {
     this.confirmService.showConfirm("Are you sure want  to block this user?",
      () => {
       this.doctorService.updateStatus(id,{status:"blocked"}).subscribe(data=>{})
+      this.doctor = this.doctor.filter(user=>user._id!=id);
+      this.dataSource = new MatTableDataSource(this.doctor);
     },
     () => {
       //yor logic if No clicked
@@ -93,9 +90,10 @@ export class PendingDocComponent {
     });
     this.modalRef.onClose.subscribe((messege?) => {
       if(messege.status){
-        this.doctorService.accept(docId,{clinicId:messege.id,
+        this.doctorService.updateStatus(docId,{clinicId:messege.id,
           status: "active"}).subscribe(data=>{
-            this.ngOnInit()
+            this.doctor = this.doctor.filter(user=>user._id!=docId);
+            this.dataSource = new MatTableDataSource(this.doctor);
             
           })
       }

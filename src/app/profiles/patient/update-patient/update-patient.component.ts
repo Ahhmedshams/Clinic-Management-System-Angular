@@ -31,13 +31,13 @@ export class UpdatePatientComponent {
         '',
         [
           Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/),
         ],
       ],
       password: ['', [Validators.required]],
       phone: [
         '',
-        [Validators.required, Validators.pattern('01[0125](-)?[0-9]{8}')],
+        [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/gm)],
       ],
       age: ['', [Validators.required]],
       gender: ['', [Validators.required]],

@@ -22,7 +22,7 @@ export class AllAppoinmentsComponent implements OnInit {
     'Time',
     'Clinic',
   ];
-  id: Number = 0;
+  id:any = localStorage.getItem("id");
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -48,5 +48,9 @@ export class AllAppoinmentsComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+  cancel() {
+    const url = `/profile/employee/${this.id}`;
+    this.router.navigateByUrl(url);
   }
 }

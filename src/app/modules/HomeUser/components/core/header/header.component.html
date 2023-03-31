@@ -9,21 +9,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0" style="display: flex;align-items: center;">
-                    <button style="font-size: 13px;" mat-raised-button class="btn border-primary m-3 ms-5" 
-                    >
-                  Register
-               </button>
-                   <button style="font-size: 11px;" mat-raised-button  class="btn border-danger  m-2 " 
-                    >
-                  login 
-               </button >
+                   
                     <a  routerLinkActive="active"  routerLink="Home" class="nav-item nav-link">Home</a>
                     <a  routerLinkActive="active" routerLink="about" class="nav-item nav-link ">About</a>
                     <a  routerLinkActive="active" routerLink="services" class="nav-item nav-link">Service</a>
-                
-                   <!-- <button type="button" class="btn "  routerLink="login"  style="height: 35px;margin-left: 10px;"><i class="fa fa-user-circle fa" style="font-size: 20px;" aria-hidden="true"></i>  -->
-                   <!-- </button>  -->
-                   
+                    <a  *ngIf="isLogged" routerLinkActive="active" (click)="profile()" class="nav-item nav-link">Profile</a>
+                    <a *ngIf="!isLogged" routerLinkActive="active"  routerLink="login" class="nav-item nav-link">login</a>
+                    <a  *ngIf="isLogged" routerLinkActive="active" (click)="logout()" class="nav-item nav-link">Logout</a>
+
                 </div>
             </div>
         </nav>

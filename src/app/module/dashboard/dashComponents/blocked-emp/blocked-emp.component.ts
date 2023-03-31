@@ -59,7 +59,9 @@ export class BlockedEmpComponent {
   unBlock(id: number) {
     this.confirmService.showConfirm("Are you sure want  to Unblock this user?",
      () => {
-      this.empService.updateStatus(id,{status:"active"}).subscribe(data=>{})
+      this.empService.updateStatus(id,{status:"active"}).subscribe(data=>{});
+      this.emps = this.emps.filter(user=>user._id!=id);
+      this.dataSource = new MatTableDataSource(this.emps);
     },
     () => {
       //yor logic if No clicked
